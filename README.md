@@ -8,6 +8,6 @@
 
 ### Running the app
 
-1. Run 'expo start'
+1. Run `expo start`
 
 ## Testing

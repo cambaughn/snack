@@ -21,6 +21,7 @@ export default class LessonSlider extends React.Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 150,
+    paddingLeft: 0,
 
   },
 });

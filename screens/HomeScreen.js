@@ -22,13 +22,15 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    console.log("NAVIGATION => ", this.props.navigation)
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
+          <Text>Get Started</Text>
           <LessonSlider>
-            <LessonCard lessonTitle={"Hola"} />
-            <LessonCard lessonTitle={"Dinner Time"} />
-            <LessonCard lessonTitle={"Family"} />
+            <LessonCard lessonTitle={"Hola"} navigation={this.props.navigation} />
+            <LessonCard lessonTitle={"Dinner Time"} navigation={this.props.navigation} />
+            <LessonCard lessonTitle={"Family"} navigation={this.props.navigation} />
           </LessonSlider>
         </ScrollView>
       </View>

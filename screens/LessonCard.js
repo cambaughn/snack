@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const LessonCard = ({ lessonTitle }) => {
+const LessonCard = ({ lessonTitle, navigation }) => {
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.push('LessonOverview')}>
       <Text style={styles.title}>{lessonTitle}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -18,9 +18,8 @@ const styles = StyleSheet.create({
     height: 200,
     width: 150,
     padding: 20,
-    marginLeft: 10,
     marginRight: 10,
-
+    marginLeft: 10,
 
     backgroundColor: '#74b9ff',
 

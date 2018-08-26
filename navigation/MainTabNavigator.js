@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import LessonOverview from '../screens/Lesson/LessonOverview';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -30,7 +31,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Explore',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -44,7 +45,7 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Profile',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -53,8 +54,24 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
+const MainStack = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
 });
+
+
+export default createStackNavigator(
+  {
+    Main: {
+      screen: MainStack,
+    },
+    LessonOverview: {
+      screen: LessonOverview,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+);

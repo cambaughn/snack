@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const LessonOverview = () => {
+const LessonOverview = ({ navigation }) => {
+  let lessonTitle = navigation.getParam('lessonTitle');
+  let backgroundColor = navigation.getParam('backgroundColor');
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>THIS IS THE LESSON</Text>
+    <View style={StyleSheet.flatten([styles.container, { backgroundColor }])}>
+      <Text style={styles.title}>{lessonTitle}</Text>
     </View>
   )
 }
@@ -15,11 +17,13 @@ const LessonOverview = () => {
 
 const styles = StyleSheet.create({
   container: {
-
+    flex: 1,
+    paddingTop: 50,
+    paddingLeft: 40,
   },
 
   title: {
-    color: 'black',
+    color: 'white',
     fontSize: 25,
     fontWeight: 'bold'
   },

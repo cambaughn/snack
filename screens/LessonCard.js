@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const LessonCard = ({ lessonTitle, navigation }) => {
+const LessonCard = ({ lessonTitle, navigation, backgroundColor }) => {
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.push('LessonOverview')}>
+    <TouchableOpacity
+      style={StyleSheet.flatten([styles.container, { backgroundColor }])}
+      onPress={() => navigation.navigate('LessonOverview', { lessonTitle, backgroundColor })}
+      >
       <Text style={styles.title}>{lessonTitle}</Text>
     </TouchableOpacity>
   )
@@ -20,8 +23,6 @@ const styles = StyleSheet.create({
     padding: 20,
     marginRight: 10,
     marginLeft: 10,
-
-    backgroundColor: '#74b9ff',
 
     borderRadius: 5,
     flex: 1,

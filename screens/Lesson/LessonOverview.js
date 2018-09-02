@@ -1,10 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
+import { get } from '../../util/getLessonText.js';
+
+
 
 const LessonOverview = ({ navigation }) => {
   let lessonTitle = navigation.getParam('lessonTitle');
   let backgroundColor = navigation.getParam('backgroundColor');
+
+  get('../../util/LessonText/hola.json');
+
 
   return (
     <View style={StyleSheet.flatten([styles.container, { backgroundColor }])}>

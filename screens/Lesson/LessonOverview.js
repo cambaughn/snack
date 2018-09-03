@@ -1,28 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
 
-import { get } from '../../util/getLessonText.js';
-
+import lessonText from '../../util/lessonText.json';
 
 
 const LessonOverview = ({ navigation }) => {
   let lessonTitle = navigation.getParam('lessonTitle');
   let backgroundColor = navigation.getParam('backgroundColor');
 
-  get('../../util/LessonText/hola.json');
-
 
   return (
     <View style={StyleSheet.flatten([styles.container, { backgroundColor }])}>
       <StatusBar hidden />
       <ScrollView style={styles.scroll}>
-        <Text onPress={() => navigation.goBack()} style={styles.closeButton}>X</Text>
+        <View style={styles.closeButtonWrapper}>
+          <Text onPress={() => navigation.goBack()} style={styles.closeButton}>X</Text>
+        </View>
         <Text style={styles.title}>{lessonTitle}</Text>
-        <Text style={styles.body}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
+        <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase()]}</Text>
       </ScrollView>
     </View>
   )
@@ -35,16 +30,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 0,
-    paddingLeft: 40,
+    paddingLeft: 30,
   },
 
   scroll: {
-    paddingTop: 30
+    // paddingTop: 30,
+    // paddingBottom: 30,
+    // height: Dimensions.get('window').height - 30,
+  },
+
+  closeButtonWrapper: {
+    // backgroundColor: 'yellow',
+    display: 'flex',
+    alignItems: 'flex-end',
+    paddingRight: 30,
   },
 
   closeButton: {
     color: 'rgba(255, 255, 255, 0.7)',
     marginBottom: 20,
+    marginTop: 30,
     fontSize: 25,
   },
 
@@ -58,6 +63,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     marginRight: 30,
+    marginBottom: 30,
     lineHeight: 30,
   },
 });

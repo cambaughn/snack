@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 import lessonText from '../../util/lessonText.json';
 
@@ -14,7 +15,7 @@ const LessonOverview = ({ navigation }) => {
       <StatusBar hidden />
       <ScrollView style={styles.scroll}>
         <View style={styles.closeButtonWrapper}>
-          <Text onPress={() => navigation.goBack()} style={styles.closeButton}>X</Text>
+          <Feather name='x' onPress={() => navigation.goBack()} style={styles.closeButton} />
         </View>
         <Text style={styles.title}>{lessonTitle}</Text>
         <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase()]}</Text>
@@ -47,10 +48,10 @@ const styles = StyleSheet.create({
   },
 
   closeButton: {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(255, 255, 255, 1)',
     marginBottom: 20,
     marginTop: 30,
-    fontSize: 25,
+    fontSize: 30,
   },
 
   title: {

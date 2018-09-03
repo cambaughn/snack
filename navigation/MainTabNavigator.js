@@ -14,12 +14,15 @@ const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
 
+// NOTE: Need to adjust color of home icon based on focus
+
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
-    <View>
-      <Feather name='home' size={25} />
-    </View>
+    <TabBarIcon
+      focused={focused}
+      name={'home'}
+    />
   ),
 };
 
@@ -32,7 +35,7 @@ LinksStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={'map'}
     />
   ),
 };
@@ -46,7 +49,7 @@ SettingsStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={'user'}
     />
   ),
 };

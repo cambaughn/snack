@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StatusBar
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
@@ -25,8 +26,9 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar hidden />
         <ScrollView style={styles.container}>
-          <TopFeature />
+          <TopFeature navigation={this.props.navigation} />
           <View style={styles.sliderGroup}>
             <Text style={styles.sectionHeader}>Get Started</Text>
             <LessonSlider>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
 const LessonCard = ({ lessonTitle, navigation, backgroundColor }) => {
 
@@ -18,19 +18,20 @@ const LessonCard = ({ lessonTitle, navigation, backgroundColor }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
-    width: 150,
+    height: 165,
+    width: Dimensions.get('window').width * 0.31,
     padding: 20,
-    marginRight: 10,
-    marginLeft: 10,
+    // marginRight: 5,
+    // marginLeft: 5,
+    marginBottom: 10,
 
     borderRadius: 5,
-    flex: 1,
+    // flex: 1,
   },
 
   title: {
     color: 'white',
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: 'bold'
   },
 });

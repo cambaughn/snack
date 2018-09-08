@@ -13,7 +13,8 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 import LessonCard from './LessonCard';
-import LessonSlider from './LessonSlider';
+import LessonSlider from './Lesson/LessonSlider';
+import LessonGroup from './Lesson/LessonGroup';
 import TopFeature from './Home/TopFeature';
 
 
@@ -31,20 +32,21 @@ export default class HomeScreen extends React.Component {
           <TopFeature navigation={this.props.navigation} />
           <View style={styles.sliderGroup}>
             <Text style={styles.sectionHeader}>Get Started</Text>
-            <LessonSlider>
+            <LessonGroup>
               <LessonCard lessonTitle={"Intro"} navigation={this.props.navigation} backgroundColor={'#74b9ff'} />
               <LessonCard lessonTitle={"Basics"} navigation={this.props.navigation} backgroundColor={'#00cec9'} />
               <LessonCard lessonTitle={"Verbs"} navigation={this.props.navigation} backgroundColor={'#a29bfe'} />
-            </LessonSlider>
+              <LessonCard lessonTitle={"Future"} navigation={this.props.navigation} backgroundColor={'#fab1a0'} />
+            </LessonGroup>
           </View>
 
           <View style={styles.sliderGroup}>
             <Text style={styles.sectionHeader}>Food</Text>
-            <LessonSlider>
+            <LessonGroup>
               <LessonCard lessonTitle={"Let's Eat!"} navigation={this.props.navigation} backgroundColor={'#fd79a8'} />
               <LessonCard lessonTitle={"Lunch & Such"} navigation={this.props.navigation} backgroundColor={'#fdcb6e'} />
               <LessonCard lessonTitle={"Cooking"} navigation={this.props.navigation} backgroundColor={'#d63031'} />
-            </LessonSlider>
+            </LessonGroup>
           </View>
         </ScrollView>
       </View>
@@ -60,9 +62,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+
   sliderGroup: {
     marginTop: 20,
   },
+
   sectionHeader: {
     fontSize: 20,
     color: 'gray',

@@ -8,7 +8,7 @@ import lessonText from '../../util/lessonText.json';
 const LessonOverview = ({ navigation }) => {
   let lessonTitle = navigation.getParam('lessonTitle');
   let backgroundColor = navigation.getParam('backgroundColor');
-
+  console.log(lessonTitle.toLowerCase().replace(/[^a-zA-Z]+/g, ''))
 
   return (
     <View style={StyleSheet.flatten([styles.container, { backgroundColor }])}>
@@ -18,7 +18,7 @@ const LessonOverview = ({ navigation }) => {
           <Feather name='x' onPress={() => navigation.goBack()} style={styles.closeButton} />
         </View>
         <Text style={styles.title}>{lessonTitle}</Text>
-        <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase()]}</Text>
+        <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase().replace(/[^a-zA-Z]+/g, '')]}</Text>
       </ScrollView>
     </View>
   )

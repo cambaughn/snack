@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
-const InfoCard = () => {
+const InfoCard = ({ navigation }) => {
 
   return (
     <TouchableOpacity
       style={styles.container}
-      // onPress={() => navigation.navigate('LessonOverview', { lessonTitle: 'Why Spanish?', backgroundColor: 'grey' })}
+      onPress={() => navigation.navigate('LessonOverview', { lessonTitle: 'Why Spanish?', backgroundColor: '#b2bec3' })}
       >
       <Text style={styles.title}>Why Spanish?</Text>
     </TouchableOpacity>

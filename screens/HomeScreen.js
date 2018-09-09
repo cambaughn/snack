@@ -32,11 +32,11 @@ export default class HomeScreen extends React.Component {
         <ScrollView style={styles.container}>
           <TopFeature navigation={this.props.navigation} />
 
-          <InfoCard />
+          <InfoCard navigation={this.props.navigation} />
             <Text style={styles.sectionHeader}>Get Started</Text>
             <LessonGroup>
               <LessonCard lessonTitle={"Hola"} navigation={this.props.navigation} backgroundColor={'#74b9ff'} />
-              <LessonCard lessonTitle={"Pronouns"} navigation={this.props.navigation} backgroundColor={'#00cec9'} />
+              <LessonCard lessonTitle={"You and Me"} navigation={this.props.navigation} backgroundColor={'#00cec9'} />
               <LessonCard lessonTitle={"Verbs"} navigation={this.props.navigation} backgroundColor={'#a29bfe'} />
               <LessonCard lessonTitle={"Future"} navigation={this.props.navigation} backgroundColor={'#fab1a0'} />
             </LessonGroup>

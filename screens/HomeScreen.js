@@ -16,6 +16,7 @@ import LessonCard from './LessonCard';
 import LessonSlider from './Lesson/LessonSlider';
 import LessonGroup from './Lesson/LessonGroup';
 import TopFeature from './Home/TopFeature';
+import InfoCard from './Home/InfoCard';
 
 
 
@@ -30,24 +31,22 @@ export default class HomeScreen extends React.Component {
         <StatusBar hidden />
         <ScrollView style={styles.container}>
           <TopFeature navigation={this.props.navigation} />
-          <View style={styles.sliderGroup}>
+
+          <InfoCard />
             <Text style={styles.sectionHeader}>Get Started</Text>
             <LessonGroup>
-              <LessonCard lessonTitle={"Intro"} navigation={this.props.navigation} backgroundColor={'#74b9ff'} />
-              <LessonCard lessonTitle={"Basics"} navigation={this.props.navigation} backgroundColor={'#00cec9'} />
+              <LessonCard lessonTitle={"Hola"} navigation={this.props.navigation} backgroundColor={'#74b9ff'} />
+              <LessonCard lessonTitle={"Pronouns"} navigation={this.props.navigation} backgroundColor={'#00cec9'} />
               <LessonCard lessonTitle={"Verbs"} navigation={this.props.navigation} backgroundColor={'#a29bfe'} />
               <LessonCard lessonTitle={"Future"} navigation={this.props.navigation} backgroundColor={'#fab1a0'} />
             </LessonGroup>
-          </View>
 
-          <View style={styles.sliderGroup}>
-            <Text style={styles.sectionHeader}>Food</Text>
-            <LessonGroup>
-              <LessonCard lessonTitle={"Let's Eat!"} navigation={this.props.navigation} backgroundColor={'#fd79a8'} />
-              <LessonCard lessonTitle={"Lunch & Such"} navigation={this.props.navigation} backgroundColor={'#fdcb6e'} />
-              <LessonCard lessonTitle={"Cooking"} navigation={this.props.navigation} backgroundColor={'#d63031'} />
-            </LessonGroup>
-          </View>
+          <Text style={styles.sectionHeader}>Food</Text>
+          <LessonGroup>
+            <LessonCard lessonTitle={"Let's Eat!"} navigation={this.props.navigation} backgroundColor={'#fd79a8'} />
+            <LessonCard lessonTitle={"Lunch & Such"} navigation={this.props.navigation} backgroundColor={'#fdcb6e'} />
+            <LessonCard lessonTitle={"Cooking"} navigation={this.props.navigation} backgroundColor={'#d63031'} />
+          </LessonGroup>
         </ScrollView>
       </View>
     );
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   sliderGroup: {
-    marginTop: 20,
+    marginTop: 10,
   },
 
   sectionHeader: {

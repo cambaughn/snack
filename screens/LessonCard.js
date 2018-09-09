@@ -20,18 +20,15 @@ const styles = StyleSheet.create({
   container: {
     height: 165,
     width: Dimensions.get('window').width * 0.31,
-    padding: 20,
-    // marginRight: 5,
-    // marginLeft: 5,
+    padding: 10,
     marginBottom: 10,
 
     borderRadius: 5,
-    // flex: 1,
   },
 
   title: {
     color: 'white',
-    fontSize: 23,
+    fontSize: 20,
     fontWeight: 'bold'
   },
 });

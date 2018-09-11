@@ -13,7 +13,7 @@ const LessonOverview = ({ navigation }) => {
   return (
     <View style={StyleSheet.flatten([styles.container, { backgroundColor }])}>
       <StatusBar hidden />
-      <ScrollView style={styles.scroll}>
+      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.closeButtonWrapper}>
           <Feather name='x' onPress={() => navigation.goBack()} style={styles.closeButton} />
         </View>

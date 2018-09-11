@@ -29,7 +29,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
           <TopFeature navigation={this.props.navigation} />
 
           <InfoCard navigation={this.props.navigation} />

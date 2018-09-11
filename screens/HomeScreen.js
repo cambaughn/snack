@@ -41,11 +41,9 @@ export default class HomeScreen extends React.Component {
               <LessonCard lessonTitle={"Future"} navigation={this.props.navigation} backgroundColor={'#fab1a0'} />
             </LessonGroup>
 
-          <Text style={styles.sectionHeader}>Food</Text>
+          <Text style={styles.sectionHeader}>More Coming Soon</Text>
           <LessonGroup>
-            <LessonCard lessonTitle={"Let's Eat!"} navigation={this.props.navigation} backgroundColor={'#fd79a8'} />
-            <LessonCard lessonTitle={"Lunch & Such"} navigation={this.props.navigation} backgroundColor={'#fdcb6e'} />
-            <LessonCard lessonTitle={"Cooking"} navigation={this.props.navigation} backgroundColor={'#d63031'} />
+            <LessonCard lessonTitle={"Stay Tuned!"} navigation={this.props.navigation} backgroundColor={'#b2bec3'} />
           </LessonGroup>
         </ScrollView>
       </View>

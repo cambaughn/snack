@@ -4,17 +4,15 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ExploreScreen from '../screens/ExploreScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import LessonOverview from '../screens/Lesson/LessonOverview';
 
-import { Feather } from '@expo/vector-icons';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
 
-// NOTE: Need to adjust color of home icon based on focus
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
@@ -26,11 +24,11 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const ExploreStack = createStackNavigator({
+  Explore: ExploreScreen,
 });
 
-LinksStack.navigationOptions = {
+ExploreStack.navigationOptions = {
   tabBarLabel: 'Explore',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -40,11 +38,11 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const ProfileStack = createStackNavigator({
+  Profile: ProfileScreen,
 });
 
-SettingsStack.navigationOptions = {
+ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -56,8 +54,8 @@ SettingsStack.navigationOptions = {
 
 const MainStack = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  ExploreStack,
+  ProfileStack,
 });
 
 

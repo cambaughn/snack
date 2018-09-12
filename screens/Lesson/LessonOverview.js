@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
+import DrillCard from '../Drill/DrillCard';
 import lessonText from '../../util/lessonText.json';
 
 
@@ -19,6 +20,8 @@ const LessonOverview = ({ navigation }) => {
         </View>
         <Text style={styles.title}>{lessonTitle}</Text>
         <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase().replace(/[^a-zA-Z]+/g, '')]}</Text>
+
+        <DrillCard />
       </ScrollView>
     </View>
   )

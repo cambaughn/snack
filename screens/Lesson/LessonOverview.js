@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 
   body: {
     color: '#2d3436',
-    fontSize: 20,
+    fontSize: 18,
     marginRight: 30,
     marginLeft: 30,
     marginBottom: 30,

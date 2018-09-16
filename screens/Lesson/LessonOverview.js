@@ -9,7 +9,6 @@ import lessonText from '../../util/lessonText.json';
 const LessonOverview = ({ navigation }) => {
   let lessonTitle = navigation.getParam('lessonTitle');
   let backgroundColor = navigation.getParam('backgroundColor');
-  console.log(lessonTitle.toLowerCase().replace(/[^a-zA-Z]+/g, ''))
 
   return (
     <View style={styles.container}>
@@ -50,13 +49,13 @@ const styles = StyleSheet.create({
 
   closeButton: {
     color: 'rgba(255, 255, 255, 1)',
-    marginBottom: 20,
-    marginTop: 30,
+    marginBottom: 15,
+    marginTop: 20,
     fontSize: 30,
   },
 
   colorBlock: {
-    height: 150,
+    height: 130,
     paddingLeft: 30,
   },
 

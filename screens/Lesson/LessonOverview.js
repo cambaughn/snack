@@ -15,10 +15,10 @@ const LessonOverview = ({ navigation }) => {
       <StatusBar hidden />
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={StyleSheet.flatten([styles.colorBlock, { backgroundColor }])}>
-          <View style={styles.closeButtonWrapper}>
-            <Feather name='x' onPress={() => navigation.goBack()} style={styles.closeButton} />
+          <View style={styles.titleWrapper}>
+            <Text style={styles.title}>{lessonTitle}</Text>
           </View>
-          <Text style={styles.title}>{lessonTitle}</Text>
+          <Feather name='x' onPress={() => navigation.goBack()} style={styles.closeButton} />
         </View>
         <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase().replace(/[^a-zA-Z]+/g, '')]}</Text>
 
@@ -57,6 +57,18 @@ const styles = StyleSheet.create({
   colorBlock: {
     height: 130,
     paddingLeft: 30,
+    paddingRight: 30,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between'
+  },
+
+  titleWrapper: {
+    height: 130,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   title: {

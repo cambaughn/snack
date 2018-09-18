@@ -1,5 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+
+import signInWithGoogleAsync from '../util/GoogleSignIn';
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
@@ -12,6 +14,9 @@ export default class ExploreScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.textWrapper}>
           <Text style={styles.text}>Coming Soon!</Text>
+          <TouchableOpacity onPress={signInWithGoogleAsync} style={styles.googleButton}>
+            <Text>Sign in with Google</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
@@ -31,6 +36,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
     height: Dimensions.get('window').height,
+  },
+
+  googleButton: {
+    width: Dimensions.get('window').width / 2,
+    height: 30,
+    backgroundColor: 'blue',
   },
 
   text: {

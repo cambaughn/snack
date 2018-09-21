@@ -7,6 +7,8 @@ import HomeScreen from '../screens/HomeScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import LessonOverview from '../screens/Lesson/LessonOverview';
+import LessonList from '../screens/Lesson/LessonList';
+
 
 
 const HomeStack = createStackNavigator({
@@ -26,6 +28,7 @@ HomeStack.navigationOptions = {
 
 const ExploreStack = createStackNavigator({
   Explore: ExploreScreen,
+  LessonList: LessonList,
 });
 
 ExploreStack.navigationOptions = {
@@ -53,7 +56,7 @@ ProfileStack.navigationOptions = {
 };
 
 const MainStack = createBottomTabNavigator({
-  HomeStack,
+  // HomeStack,
   ExploreStack,
   ProfileStack,
 });

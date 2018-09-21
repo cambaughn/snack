@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, Text, StyleSheet } from 'react-native';
 
-export default class Lesson extends React.Component {
+export default class LessonGroup extends React.Component {
   constructor(props) {
     super(props)
   }

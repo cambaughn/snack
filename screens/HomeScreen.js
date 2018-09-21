@@ -12,7 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
-import LessonCard from './LessonCard';
+import LessonCard from './Lesson/LessonCard';
 import LessonSlider from './Lesson/LessonSlider';
 import LessonGroup from './Lesson/LessonGroup';
 import TopFeature from './Home/TopFeature';

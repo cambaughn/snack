@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
-const PackCard = ({ navigation }) => {
+const PackCard = ({ navigation, title, backgroundColor }) => {
 
   return (
     <TouchableOpacity
-      style={styles.container}
-      onPress={() => navigation.navigate('LessonList', { lessons: [1, 2, 3, 4, 5] })}
+      style={StyleSheet.flatten([styles.container, { backgroundColor }])}
+      onPress={() => navigation.navigate('LessonList', { lessons: [{title: 'Hola', backgroundColor: '#74b9ff', id: 1}, {title: 'You and Me', backgroundColor: '#00cec9', id: 2}] })}
       >
-      <Text style={styles.title}>Get Started</Text>
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   )
 }

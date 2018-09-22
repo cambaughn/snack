@@ -7,7 +7,16 @@ import PackSlider from './Pack/PackSlider';
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
     title: 'Explore',
-    header: null
+    headerBackTitle: null,
+    headerTruncatedBackTitle: null,
+    headerStyle: {
+      backgroundColor: 'white',
+    },
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 20,
+      color: '#2d3436',
+    },
   };
 
   render() {
@@ -17,8 +26,8 @@ export default class ExploreScreen extends React.Component {
 
         <Text style={styles.sectionHeader}>Featured</Text>
         <PackSlider>
-          <PackCard navigation={this.props.navigation} />
-          <PackCard navigation={this.props.navigation} />
+          <PackCard navigation={this.props.navigation} title={'Get Started'} backgroundColor={'#74b9ff'} />
+          <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'}/>
         </PackSlider>
       </ScrollView>
     );
@@ -30,7 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
 
-    paddingTop: 50,
+    paddingTop: 20,
   },
 
   textWrapper: {
@@ -42,10 +51,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
 
-  text: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
 
   sectionHeader: {
     fontSize: 20,

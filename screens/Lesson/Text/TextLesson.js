@@ -2,11 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import DrillCard from '../Drill/DrillCard';
-import lessonText from '../../util/lessonText.json';
+import lessonText from '../../../util/lessonText.json';
 
 
-const LessonOverview = ({ navigation }) => {
+const TextLesson = ({ navigation }) => {
   let lessonTitle = navigation.getParam('lessonTitle');
   let backgroundColor = navigation.getParam('backgroundColor');
 
@@ -89,4 +88,4 @@ const styles = StyleSheet.create({
 
 
 
-export default LessonOverview;
+export default TextLesson;

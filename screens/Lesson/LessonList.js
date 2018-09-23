@@ -14,7 +14,7 @@ export default class LessonList extends React.Component {
       },
       headerTintColor: '#ff7675',
       headerTitleStyle: {
-        color: 'black',
+        color: '#2d3436',
         fontSize: 18,
       },
     };

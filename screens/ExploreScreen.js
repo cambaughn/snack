@@ -15,7 +15,7 @@ export default class ExploreScreen extends React.Component {
     },
     headerTitleStyle: {
       fontWeight: 'bold',
-      fontSize: 20,
+      fontSize: 18,
       color: '#2d3436',
     },
   };

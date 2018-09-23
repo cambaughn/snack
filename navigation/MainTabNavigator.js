@@ -6,8 +6,9 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import LessonOverview from '../screens/Lesson/LessonOverview';
+import TextLesson from '../screens/Lesson/Text/TextLesson';
 import LessonList from '../screens/Lesson/LessonList';
+import Drill from '../screens/Lesson/Drill/Drill';
 
 
 
@@ -67,8 +68,11 @@ export default createStackNavigator(
     Main: {
       screen: MainStack,
     },
-    LessonOverview: {
-      screen: LessonOverview,
+    TextLesson: {
+      screen: TextLesson,
+    },
+    Drill: {
+      screen: Drill,
     },
   },
   {

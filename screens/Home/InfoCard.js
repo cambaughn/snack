@@ -6,7 +6,7 @@ const InfoCard = ({ navigation }) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate('LessonOverview', { lessonTitle: 'Why Spanish?', backgroundColor: '#b2bec3' })}
+      onPress={() => navigation.navigate('TextLesson', { lessonTitle: 'Why Spanish?', backgroundColor: '#b2bec3' })}
       >
       <Text style={styles.title}>Why Spanish?</Text>
     </TouchableOpacity>

@@ -8,7 +8,7 @@ const TopFeature = ({ navigation }) => {
       <Text style={styles.title}>Welcome to Snack!</Text>
 
       <View style={styles.buttonWrapper}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LessonOverview', { lessonTitle: 'About', backgroundColor: '#ff7675' })}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TextLesson', { lessonTitle: 'About', backgroundColor: '#ff7675' })}>
           <Text style={styles.buttonText}>Learn more</Text>
         </TouchableOpacity>
       </View>

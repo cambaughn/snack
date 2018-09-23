@@ -16,3 +16,5 @@ export default class TabBarIcon extends React.Component {
     );
   }
 }
+
+// default blue for selected tab bar icon: Colors.tabIconSelected

@@ -1,10 +1,16 @@
 import React from 'react';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 const LessonListItem = ({ navigation, lesson }) => {
+
+  let typeIcon = lesson.type === 'text' ? 'book' : 'zap';
+
   return (
     <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('LessonOverview', { lessonTitle: lesson.title, backgroundColor: lesson.backgroundColor })}>
       <Text style={styles.title}>{lesson.title}</Text>
+      <Feather name={typeIcon} size={18} />
+
     </TouchableOpacity>
   )
 }
@@ -14,18 +20,18 @@ const LessonListItem = ({ navigation, lesson }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
-
-    paddingLeft: 30,
+    height: 60,
 
     display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
 
-    marginBottom: 10,
+    marginTop: 5,
+    marginBottom: 5,
 
-    // borderBottomWidth: 1,
-    // borderBottomColor: '#dfe6e9',
+    borderBottomWidth: 1,
+    borderBottomColor: '#dfe6e9',
 
   },
 

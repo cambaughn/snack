@@ -9,6 +9,7 @@ export default class ExploreScreen extends React.Component {
     title: 'Explore',
     headerBackTitle: null,
     headerTruncatedBackTitle: null,
+    headerTintColor: '#ff7675',
     headerStyle: {
       backgroundColor: 'white',
     },
@@ -24,7 +25,7 @@ export default class ExploreScreen extends React.Component {
       <ScrollView style={styles.container}>
         <StatusBar hidden />
 
-        <Text style={styles.sectionHeader}>Featured</Text>
+        <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
           <PackCard navigation={this.props.navigation} title={'Get Started'} backgroundColor={'#74b9ff'} />
           <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'}/>
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 
 
   sectionHeader: {
-    fontSize: 20,
+    fontSize: 18,
     color: 'gray',
     fontWeight: 'bold',
 

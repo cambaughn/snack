@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
+import lessonData from '../../util/dummyData/lessonData';
+
 const PackCard = ({ navigation, title, backgroundColor }) => {
 
   return (
     <TouchableOpacity
       style={StyleSheet.flatten([styles.container, { backgroundColor }])}
-      onPress={() => navigation.navigate('LessonList', { lessons: [{title: 'Hola', backgroundColor: '#74b9ff', id: 1}, {title: 'You and Me', backgroundColor: '#00cec9', id: 2}] })}
+      onPress={() => navigation.navigate('LessonList', { lessons: lessonData, packTitle: title })}
       >
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>

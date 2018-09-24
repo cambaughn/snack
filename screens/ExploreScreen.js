@@ -14,9 +14,6 @@ export default class ExploreScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.textWrapper}>
           <Text style={styles.text}>Coming Soon!</Text>
-          <TouchableOpacity onPress={signInWithGoogleAsync} style={styles.googleButton}>
-            <Text>Sign in with Google</Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     );

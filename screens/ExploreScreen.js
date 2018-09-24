@@ -32,7 +32,7 @@ export default class ExploreScreen extends React.Component {
           <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'}/>
         </PackSlider>
 
-        <View style={styles.topicsHeaderWrapper}>
+        {/* <View style={styles.topicsHeaderWrapper}>
           <Text style={styles.topicsHeader}>Topics</Text>
         </View>
         <View style={styles.topicsWrapper}>
@@ -40,7 +40,7 @@ export default class ExploreScreen extends React.Component {
           <TopicCard title={'Intermediate'} color={'#6c5ce7'} />
           <TopicCard title={'Advanced'} color={'#e17055'} />
           <TopicCard title={'Travel'} color={'#fdcb6e'} />
-        </View>
+        </View> */}
       </ScrollView>
     );
   }

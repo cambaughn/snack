@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions, Alert } from
 import { Feather } from '@expo/vector-icons';
 
 import lessonText from '../../../util/lessonText.json';
-
+import MultipleChoice from './MultipleChoice';
 
 export default class Drill extends React.Component {
   static navigationOptions = {
@@ -11,6 +11,8 @@ export default class Drill extends React.Component {
   };
 
   render() {
+    let currentQuestion = { type: 'multipleChoice', prompt: 'Please translate the following', text: 'Que estas haciendo?', answers: ['Hello, how are you?', 'What are you up to?', 'What are you doing?'], correct: 2}
+
     return (
       <View style={styles.container}>
         <StatusBar hidden />
@@ -31,7 +33,9 @@ export default class Drill extends React.Component {
             style={styles.closeButton}
           />
         </View>
-        <Text>This is a drill</Text>
+        { currentQuestion.type === 'multipleChoice' &&
+          <MultipleChoice question={currentQuestion} />
+        }
       </View>
     )
   }

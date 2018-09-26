@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, View, Dimensions, StatusBar } from 'react
 import PackCard from './Pack/PackCard';
 import PackSlider from './Pack/PackSlider';
 import TopicCard from './Topic/TopicCard';
+import Drill from './Lesson/Drill/Drill';
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
@@ -23,14 +24,16 @@ export default class ExploreScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <StatusBar hidden />
 
-        <Text style={styles.sectionHeader}>Featured Packs</Text>
+        <Drill />
+
+        {/* <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
           <PackCard navigation={this.props.navigation} title={'Get Started'} backgroundColor={'#74b9ff'} />
           <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'}/>
-        </PackSlider>
+        </PackSlider> */}
 
         {/* <View style={styles.topicsHeaderWrapper}>
           <Text style={styles.topicsHeader}>Topics</Text>
@@ -41,7 +44,7 @@ export default class ExploreScreen extends React.Component {
           <TopicCard title={'Advanced'} color={'#e17055'} />
           <TopicCard title={'Travel'} color={'#fdcb6e'} />
         </View> */}
-      </ScrollView>
+      </View>
     );
   }
 }

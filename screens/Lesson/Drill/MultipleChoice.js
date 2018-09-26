@@ -20,6 +20,13 @@ const MultipleChoice = ({ question }) => {
               <Text style={styles.answer}>{answer}</Text>
             </TouchableOpacity>
           ))}
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={() => console.log('Submitting!')}
+
+            >
+              <Text style={styles.submitText}>Submit</Text>
+          </TouchableOpacity>
       </View>
     </View>
   )
@@ -75,6 +82,31 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  submitButton: {
+    width: Dimensions.get('window').width * .75,
+    height: 70,
+    marginBottom: 15,
+    borderRadius: 5,
+
+    // borderColor: 'black',
+    // borderWidth: 1,
+
+    backgroundColor: 'black',
+    // shadowColor: 'grey',
+    // shadowOffset: {width: 0, height: 2},
+    // shadowRadius: 3,
+    // shadowOpacity: 0.3,
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  submitText: {
+    fontSize: 17,
+    color: 'white',
   },
 
   answer: {

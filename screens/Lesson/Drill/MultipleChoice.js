@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     // fontStyle: 'italic',
     marginBottom: 20,
-    marginTop: 50,
+    marginTop: 40,
   },
 
   text: {

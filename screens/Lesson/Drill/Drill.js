@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 
 import lessonText from '../../../util/lessonText.json';
 import MultipleChoice from './MultipleChoice';
+import TypingQuestion from './TypingQuestion';
 
 export default class Drill extends React.Component {
   static navigationOptions = {
@@ -11,7 +12,9 @@ export default class Drill extends React.Component {
   };
 
   render() {
-    let currentQuestion = { type: 'multipleChoice', prompt: 'Please translate the following', text: 'Que estas haciendo?', answers: ['Hello, how are you?', 'What are you up to?', 'What are you doing?'], correct: 2}
+    { /* let currentQuestion = { type: 'multipleChoice', prompt: 'Please translate the following', text: 'Que estas haciendo?', answers: ['Hello, how are you?', 'What are you up to?', 'What are you doing?'], correct: 2} */ }
+
+    let currentQuestion = { type: 'typing', prompt: 'Please translate the following', text: 'Quiero ir a Mexico.', answer: 'I want to go to Mexico.' }
 
     return (
       <View style={styles.container}>
@@ -35,6 +38,10 @@ export default class Drill extends React.Component {
         </View>
         { currentQuestion.type === 'multipleChoice' &&
           <MultipleChoice question={currentQuestion} />
+        }
+
+        { currentQuestion.type === 'typing' &&
+          <TypingQuestion question={currentQuestion} />
         }
       </View>
     )

@@ -5,6 +5,7 @@ import PackCard from './Pack/PackCard';
 import PackSlider from './Pack/PackSlider';
 import TopicCard from './Topic/TopicCard';
 import Drill from './Lesson/Drill/Drill';
+import LessonList from './Lesson/LessonList';
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
@@ -27,13 +28,11 @@ export default class ExploreScreen extends React.Component {
       <View style={styles.container}>
         <StatusBar hidden />
 
-        <Drill />
-
-        {/* <Text style={styles.sectionHeader}>Featured Packs</Text>
+        <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
           <PackCard navigation={this.props.navigation} title={'Get Started'} backgroundColor={'#74b9ff'} />
           <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'}/>
-        </PackSlider> */}
+        </PackSlider>
 
         {/* <View style={styles.topicsHeaderWrapper}>
           <Text style={styles.topicsHeader}>Topics</Text>

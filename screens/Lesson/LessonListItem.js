@@ -8,7 +8,7 @@ const LessonListItem = ({ navigation, lesson }) => {
   let route = lesson.type === 'text' ? 'TextLesson' : 'Drill';
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(route, { lessonTitle: lesson.title, backgroundColor: lesson.backgroundColor })}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(route, { lessonTitle: lesson.title, backgroundColor: lesson.backgroundColor, questions: lesson.questions })}>
       <Text style={styles.title}>{lesson.title}</Text>
       <Feather name={typeIcon} size={18} />
 

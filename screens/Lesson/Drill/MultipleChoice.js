@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
 
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'flex-start'
   },
 
   prompt: {
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     paddingBottom: 20,
+    marginTop: 25,
   },
 
   answerButton: {

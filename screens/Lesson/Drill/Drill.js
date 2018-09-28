@@ -11,11 +11,22 @@ export default class Drill extends React.Component {
     gesturesEnabled: false
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      questions: this.props.navigation.getParam('questions'),
+      pointer: 0,
+    }
+  }
+
+
   render() {
     { /* let currentQuestion = { type: 'multipleChoice', prompt: 'Please translate the following', text: 'Que estas haciendo?', answers: ['Hello, how are you?', 'What are you up to?', 'What are you doing?'], correct: 2} */ }
 
-    let currentQuestion = { type: 'typing', prompt: 'Please translate the following', text: 'Quiero ir a Mexico.', answer: 'I want to go to Mexico.' }
+    let currentQuestion = this.state.questions[this.state.pointer];
 
+    // NOTE: Just move the pointer between questions, maybe add an animation between renders
     return (
       <View style={styles.container}>
         <StatusBar hidden />

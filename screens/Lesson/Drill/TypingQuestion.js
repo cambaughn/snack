@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
 
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'flex-start'
   },
 
   prompt: {
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * .75,
     height: 70,
     marginBottom: 15,
+    marginTop: 25,
     borderRadius: 5,
 
     backgroundColor: 'black',

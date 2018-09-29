@@ -1,35 +1,58 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
-const MultipleChoice = ({ question }) => {
+export default class MultipleChoice extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.prompt}>{question.prompt}</Text>
-        <Text style={styles.text}>{question.text}</Text>
-      </View>
+    this.state = {
+      selected: null,
+    }
+  }
 
-      <View style={styles.answersWrapper}>
-        { question.answers.map(answer => (
-          <TouchableOpacity
-            onPress={() => console.log(answer === question.answers[question.correct] ? 'Correct answer!' : 'Wrong answer...')}
-            style={styles.answerButton}
-            key={answer}
-            >
-              <Text style={styles.answer}>{answer}</Text>
-            </TouchableOpacity>
-          ))}
-          <TouchableOpacity
-            style={styles.submitButton}
-            onPress={() => console.log('Submitting!')}
+  evaluateAnswer = () => {
+    if (this.state.selected) {
+      if (this.state.selected === this.props.question.answers[this.props.question.correct]) {
+        console.log('correct answer!!!!');
+        this.props.goNextQuestion();
+      } else {
+        console.log('wrong answer!!!!')
+      }
+    }
+  }
 
-            >
-              <Text style={styles.submitText}>Submit</Text>
-          </TouchableOpacity>
-      </View>
-    </View>
-  )
+  render() {
+    return (
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.prompt}>{this.props.question.prompt}</Text>
+          <Text style={styles.text}>{this.props.question.text}</Text>
+        </View>
+
+        <View style={styles.answersWrapper}>
+          { this.props.question.answers.map(answer => {
+              let answerStyle = this.state.selected === answer ? StyleSheet.flatten([styles.answerButton, styles.selectedAnswer]) : styles.answerButton;
+              let answerText = this.state.selected === answer ? StyleSheet.flatten([styles.answer, styles.selectedAnswerText]) : styles.answer;
+              return (
+              <TouchableOpacity
+                onPress={() => this.setState({ selected: answer })}
+                style={answerStyle}
+                key={answer}
+                >
+                  <Text style={answerText}>{answer}</Text>
+                </TouchableOpacity>
+              )
+          })}
+            <TouchableOpacity
+              style={styles.submitButton}
+              onPress={this.evaluateAnswer}
+              >
+                <Text style={styles.submitText}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )
+  }
 }
 
 
@@ -38,11 +61,12 @@ const MultipleChoice = ({ question }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: 30,
-    marginRight: 30,
+    paddingLeft: 30,
+    paddingRight: 30,
 
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    backgroundColor: 'white'
   },
 
   prompt: {
@@ -85,6 +109,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  selectedAnswer: {
+    backgroundColor: '#74b9ff',
+    borderColor: '#74b9ff',
+  },
+
+  selectedAnswerText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+
   submitButton: {
     width: Dimensions.get('window').width * .75,
     height: 70,
@@ -95,10 +129,6 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
 
     backgroundColor: 'black',
-    // shadowColor: 'grey',
-    // shadowOffset: {width: 0, height: 2},
-    // shadowRadius: 3,
-    // shadowOpacity: 0.3,
 
     display: 'flex',
     alignItems: 'center',
@@ -114,7 +144,3 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
 });
-
-
-
-export default MultipleChoice;

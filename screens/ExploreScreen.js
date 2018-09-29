@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View, Dimensions, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 
 import PackCard from './Pack/PackCard';
 import PackSlider from './Pack/PackSlider';
@@ -25,7 +26,7 @@ export default class ExploreScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <StatusBar hidden />
 
         <Text style={styles.sectionHeader}>Featured Packs</Text>
@@ -43,7 +44,7 @@ export default class ExploreScreen extends React.Component {
           <TopicCard title={'Advanced'} color={'#e17055'} />
           <TopicCard title={'Travel'} color={'#fdcb6e'} />
         </View> */}
-      </View>
+      </SafeAreaView>
     );
   }
 }

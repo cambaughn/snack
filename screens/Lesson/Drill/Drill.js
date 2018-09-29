@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions, Alert } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-navigation';
 
 import lessonText from '../../../util/lessonText.json';
 import MultipleChoice from './MultipleChoice';
@@ -8,7 +9,8 @@ import TypingQuestion from './TypingQuestion';
 
 export default class Drill extends React.Component {
   static navigationOptions = {
-    gesturesEnabled: false
+    gesturesEnabled: false,
+    header: null,
   };
 
   constructor(props) {
@@ -20,6 +22,10 @@ export default class Drill extends React.Component {
     }
   }
 
+  goNextQuestion = () => {
+    this.setState({ pointer: this.state.pointer + 1 })
+  }
+
 
   render() {
     { /* let currentQuestion = { type: 'multipleChoice', prompt: 'Please translate the following', text: 'Que estas haciendo?', answers: ['Hello, how are you?', 'What are you up to?', 'What are you doing?'], correct: 2} */ }
@@ -28,7 +34,7 @@ export default class Drill extends React.Component {
 
     // NOTE: Just move the pointer between questions, maybe add an animation between renders
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <StatusBar hidden />
         <View style={styles.topWrapper}>
           <Feather
@@ -48,13 +54,13 @@ export default class Drill extends React.Component {
           />
         </View>
         { currentQuestion.type === 'multipleChoice' &&
-          <MultipleChoice question={currentQuestion} />
+          <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} navigation={this.props.navigation} />
         }
 
         { currentQuestion.type === 'typing' &&
           <TypingQuestion question={currentQuestion} />
         }
-      </View>
+      </SafeAreaView>
     )
   }
 }

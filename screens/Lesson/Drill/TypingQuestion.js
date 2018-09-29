@@ -13,6 +13,7 @@ const TypingQuestion = ({ question }) => {
           style={styles.textBox}
           numberOfLines={4}
           multiline={true}
+          autoFocus={true}
         />
       </View>
 

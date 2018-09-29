@@ -8,6 +8,7 @@ import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import TextLesson from '../screens/Lesson/Text/TextLesson';
 import LessonList from '../screens/Lesson/LessonList';
+
 import Drill from '../screens/Lesson/Drill/Drill';
 
 
@@ -55,6 +56,7 @@ ProfileStack.navigationOptions = {
     />
   ),
 };
+
 
 const MainStack = createBottomTabNavigator({
   // HomeStack,

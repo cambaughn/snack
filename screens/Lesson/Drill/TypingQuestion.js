@@ -1,32 +1,53 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 
-const TypingQuestion = ({ question }) => {
+export default class TypingQuestion extends React.Component {
 
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.prompt}>{question.prompt}</Text>
-        <Text style={styles.text}>{question.text}</Text>
+  constructor(props) {
+    super(props);
 
-        <TextInput
-          style={styles.textBox}
-          numberOfLines={4}
-          multiline={true}
-          autoFocus={true}
-        />
-      </View>
+    this.state = {
+      text: '',
+    }
+  }
 
-      <KeyboardAvoidingView style={styles.answersWrapper} contentContainerStyle={styles.answersWrapper} >
+  evaluateAnswer = () => {
+    let userAnswer = this.state.text.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ");
+    console.log('ANSWER = ', userAnswer)
+    if (this.props.question.answers.includes(userAnswer)) {
+      this.props.goNextQuestion();
+    }
+  }
+
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.prompt}>{this.props.question.prompt}</Text>
+          <Text style={styles.text}>{this.props.question.text}</Text>
+
+          <TextInput
+            style={styles.textBox}
+            numberOfLines={4}
+            multiline={true}
+            autoFocus={true}
+            onChangeText={text => this.setState({ text })}
+            value={this.state.text}
+          />
+        </View>
+
+        <KeyboardAvoidingView style={styles.answersWrapper} contentContainerStyle={styles.answersWrapper} >
           <TouchableOpacity
             style={styles.submitButton}
-            onPress={() => console.log('Submitting!')}
+            onPress={this.evaluateAnswer}
             >
               <Text style={styles.submitText}>Submit</Text>
             </TouchableOpacity>
-      </KeyboardAvoidingView>
-    </View>
-  )
+          </KeyboardAvoidingView>
+        </View>
+      )
+  }
 }
 
 // NOTE: Submit button will need to clear keyboard.
@@ -95,7 +116,3 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
 });
-
-
-
-export default TypingQuestion;

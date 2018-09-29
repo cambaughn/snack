@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-navigation';
 import lessonText from '../../../util/lessonText.json';
 import MultipleChoice from './MultipleChoice';
 import TypingQuestion from './TypingQuestion';
+import FinishedDrill from './FinishedDrill';
 
 export default class Drill extends React.Component {
   static navigationOptions = {
@@ -26,17 +27,19 @@ export default class Drill extends React.Component {
     this.setState({ pointer: this.state.pointer + 1 })
   }
 
+  closeModal = () => {
+    this.props.navigation.goBack();
+  }
+
 
   render() {
-    { /* let currentQuestion = { type: 'multipleChoice', prompt: 'Please translate the following', text: 'Que estas haciendo?', answers: ['Hello, how are you?', 'What are you up to?', 'What are you doing?'], correct: 2} */ }
+    let currentQuestion = this.state.questions[this.state.pointer] || 'finished';
 
-    let currentQuestion = this.state.questions[this.state.pointer];
-
-    // NOTE: Just move the pointer between questions, maybe add an animation between renders
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar hidden />
         <View style={styles.topWrapper}>
+          { currentQuestion !== 'finished' &&
           <Feather
             name='x'
             onPress={() => {
@@ -45,20 +48,25 @@ export default class Drill extends React.Component {
                 'Your progress in this lesson will be lost.',
                 [
                   {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                  {text: 'OK', onPress: () => this.props.navigation.goBack()},
+                  {text: 'OK', onPress: this.closeModal},
                 ],
                 { cancelable: true }
               )
             }}
             style={styles.closeButton}
           />
+          }
         </View>
         { currentQuestion.type === 'multipleChoice' &&
-          <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} navigation={this.props.navigation} />
+          <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} />
         }
 
         { currentQuestion.type === 'typing' &&
-          <TypingQuestion question={currentQuestion} />
+          <TypingQuestion question={currentQuestion} goNextQuestion={this.goNextQuestion} />
+        }
+
+        { currentQuestion === 'finished' &&
+          <FinishedDrill closeModal={this.closeModal} />
         }
       </SafeAreaView>
     )

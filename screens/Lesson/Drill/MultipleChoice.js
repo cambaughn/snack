@@ -10,12 +10,18 @@ export default class MultipleChoice extends React.Component {
     }
   }
 
+  componentWillReceiveProps = () => {
+    this.setState({ selected: null })
+  }
+
   evaluateAnswer = () => {
     if (this.state.selected) {
       if (this.state.selected === this.props.question.answers[this.props.question.correct]) {
         console.log('correct answer!!!!');
         this.props.goNextQuestion();
       } else {
+        this.props.failQuestion();
+        this.setState({ selected: null })
         console.log('wrong answer!!!!')
       }
     }
@@ -44,10 +50,15 @@ export default class MultipleChoice extends React.Component {
               )
           })}
             <TouchableOpacity
-              style={styles.submitButton}
+              style={this.state.selected ? styles.submitButton : StyleSheet.flatten([styles.submitButton, styles.selectButton])}
               onPress={this.evaluateAnswer}
               >
-                <Text style={styles.submitText}>Submit</Text>
+                { !this.state.selected &&
+                  <Text style={styles.submitText}>Please Select</Text>
+                }
+                { this.state.selected &&
+                  <Text style={styles.submitText}>Submit</Text>
+                }
               </TouchableOpacity>
             </View>
           </View>
@@ -133,6 +144,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  selectButton: {
+    backgroundColor: 'grey',
   },
 
   submitText: {

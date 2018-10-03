@@ -31,6 +31,12 @@ export default class Drill extends React.Component {
     this.props.navigation.goBack();
   }
 
+  failQuestion = () => {
+    let q = this.state.questions
+    q.push(...q.splice(this.state.pointer, 1));
+    this.setState({ questions: q });
+  }
+
 
   render() {
     let currentQuestion = this.state.questions[this.state.pointer] || 'finished';
@@ -58,7 +64,7 @@ export default class Drill extends React.Component {
           }
         </View>
         { currentQuestion.type === 'multipleChoice' &&
-          <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} />
+          <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} failQuestion={this.failQuestion} />
         }
 
         { currentQuestion.type === 'typing' &&

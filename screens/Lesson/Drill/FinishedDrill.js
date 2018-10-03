@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
 
     marginTop: 50,
+    marginBottom: 50,
   },
 
   closeButton: {

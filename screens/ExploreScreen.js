@@ -32,7 +32,7 @@ export default class ExploreScreen extends React.Component {
         <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
           <PackCard navigation={this.props.navigation} title={'Get Started'} backgroundColor={'#74b9ff'} />
-          <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'}/>
+          <PackCard navigation={this.props.navigation} title={'Travel'} backgroundColor={'#a29bfe'} />
         </PackSlider>
 
         {/* <View style={styles.topicsHeaderWrapper}>

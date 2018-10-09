@@ -1,27 +1,42 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
+import AnswerPopup from './AnswerPopup';
+
 export default class MultipleChoice extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       selected: null,
+      submitted: null,
+      correct: null,
+      correctAnswer: this.props.question.answers[this.props.question.correct],
     }
+
+    // this.baseState = this.state;
   }
 
   componentWillReceiveProps = () => {
-    this.setState({ selected: null })
+    let baseState = {
+      selected: null,
+      submitted: null,
+      correct: null,
+      correctAnswer: this.props.question.answers[this.props.question.correct],
+    };
+
+    this.setState(baseState);
   }
 
   evaluateAnswer = () => {
     if (this.state.selected) {
-      if (this.state.selected === this.props.question.answers[this.props.question.correct]) {
+      this.setState({ submitted: true });
+      if (this.state.selected === this.state.correctAnswer) { // if answered correctly
+        this.setState({ correct: true });
         console.log('correct answer!!!!');
-        this.props.goNextQuestion();
-      } else {
-        this.props.failQuestion();
-        this.setState({ selected: null })
+      } else { // if answered incorrectly
+        // this.props.failQuestion();
+        this.setState({ correct: false });
         console.log('wrong answer!!!!')
       }
     }
@@ -61,6 +76,10 @@ export default class MultipleChoice extends React.Component {
                 }
               </TouchableOpacity>
             </View>
+
+            { this.state.submitted &&
+              <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={this.props.question.answers[this.props.question.correct]} />
+            }
           </View>
         )
   }

@@ -7,11 +7,13 @@ const AnswerPopup = ({ correct, correctAnswer, goNextQuestion, failQuestion }) =
     <View style={styles.container}>
       <View style={correct ? StyleSheet.flatten([styles.card, styles.correct]) : StyleSheet.flatten([styles.card, styles.incorrect])}>
         { correct &&
-          <Text style={styles.correctAnswer}>Good job!</Text>
+          <View style={styles.textWrapper}>
+            <Text style={styles.correctAnswer}>Good job!</Text>
+          </View>
         }
 
         { !correct &&
-          <View>
+          <View style={styles.textWrapper}>
             <Text style={styles.prompt}>Correct answer:</Text>
             <Text style={styles.correctAnswer}>{correctAnswer}</Text>
           </View>
@@ -59,6 +61,14 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 5,
     shadowOpacity: 0.5,
+  },
+
+  textWrapper: {
+    flex: 1,
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   prompt: {

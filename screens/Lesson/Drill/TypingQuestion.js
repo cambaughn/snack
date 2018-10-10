@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 
+import AnswerPopup from './AnswerPopup';
+
 export default class TypingQuestion extends React.Component {
 
   constructor(props) {
@@ -13,7 +15,6 @@ export default class TypingQuestion extends React.Component {
 
   evaluateAnswer = () => {
     let userAnswer = this.state.text.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ");
-    console.log('ANSWER = ', userAnswer)
     if (this.props.question.answers.includes(userAnswer)) {
       this.props.goNextQuestion();
     }
@@ -49,8 +50,6 @@ export default class TypingQuestion extends React.Component {
       )
   }
 }
-
-// NOTE: Submit button will need to clear keyboard.
 
 
 const styles = StyleSheet.create({

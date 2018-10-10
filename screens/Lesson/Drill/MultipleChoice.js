@@ -11,38 +11,31 @@ export default class MultipleChoice extends React.Component {
       selected: null,
       submitted: null,
       correct: null,
-      correctAnswer: this.props.question.answers[this.props.question.correct],
     }
 
-    // this.baseState = this.state;
+    this.baseState = this.state;
   }
 
   componentWillReceiveProps = () => {
-    let baseState = {
-      selected: null,
-      submitted: null,
-      correct: null,
-      correctAnswer: this.props.question.answers[this.props.question.correct],
-    };
-
-    this.setState(baseState);
+    this.setState(this.baseState);
   }
 
   evaluateAnswer = () => {
+    let correctAnswer = this.props.question.answers[this.props.question.correct];
     if (this.state.selected) {
+      console.log('DEBUG => ', correctAnswer)
       this.setState({ submitted: true });
-      if (this.state.selected === this.state.correctAnswer) { // if answered correctly
+      if (this.state.selected === correctAnswer) { // if answered correctly
         this.setState({ correct: true });
-        console.log('correct answer!!!!');
       } else { // if answered incorrectly
-        // this.props.failQuestion();
         this.setState({ correct: false });
-        console.log('wrong answer!!!!')
       }
     }
   }
 
   render() {
+    let correctAnswer = this.props.question.answers[this.props.question.correct];
+
     return (
       <View style={styles.container}>
         <View>
@@ -78,7 +71,7 @@ export default class MultipleChoice extends React.Component {
             </View>
 
             { this.state.submitted &&
-              <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={this.props.question.answers[this.props.question.correct]} />
+              <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={correctAnswer} resetState={this.resetState} />
             }
           </View>
         )

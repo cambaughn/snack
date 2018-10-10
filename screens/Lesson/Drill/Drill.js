@@ -23,16 +23,17 @@ export default class Drill extends React.Component {
     }
   }
 
-  goNextQuestion = () => {
-    this.setState({ pointer: this.state.pointer + 1 })
-  }
-
   closeModal = () => {
     this.props.navigation.goBack();
   }
 
+  goNextQuestion = () => {
+    this.setState({ pointer: this.state.pointer + 1 })
+  }
+
   failQuestion = () => {
-    let q = this.state.questions
+    console.log('FAILED QUESTION')
+    let q = this.state.questions;
     q.push(...q.splice(this.state.pointer, 1));
     this.setState({ questions: q });
   }
@@ -68,7 +69,7 @@ export default class Drill extends React.Component {
         }
 
         { currentQuestion.type === 'typing' &&
-          <TypingQuestion question={currentQuestion} goNextQuestion={this.goNextQuestion} />
+          <TypingQuestion question={currentQuestion} goNextQuestion={this.goNextQuestion} failQuestion={this.failQuestion} />
         }
 
         { currentQuestion === 'finished' &&

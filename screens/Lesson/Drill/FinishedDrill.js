@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
 
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
 
   header: {
     fontSize: 25,
     fontWeight: 'bold',
 
-    marginTop: 50,
+    // marginTop: 50,
     marginBottom: 50,
   },
 

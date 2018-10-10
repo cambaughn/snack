@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, KeyboardAvoidingView, Keyboard } from 'react-native';
 
 import AnswerPopup from './AnswerPopup';
 
@@ -10,18 +10,39 @@ export default class TypingQuestion extends React.Component {
 
     this.state = {
       text: '',
+      submitted: null,
+      correct: null,
     }
+
+    this.baseState = this.state;
+  }
+
+  componentWillReceiveProps = () => {
+    this.setState(this.baseState);
+    Keyboard.dismiss();
   }
 
   evaluateAnswer = () => {
     let userAnswer = this.state.text.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ");
-    if (this.props.question.answers.includes(userAnswer)) {
-      this.props.goNextQuestion();
+
+    if (this.state.text.length > 0) {
+      this.setState({ submitted: true });
+      Keyboard.dismiss();
+
+      if (this.props.question.answers.includes(userAnswer)) {
+        this.setState({ correct: true });
+        console.log('RIGHT');
+      } else {
+        this.setState({ correct: false });
+        console.log('WRONG');
+      }
     }
   }
 
 
   render() {
+    let correctAnswer = this.props.question.answers[0];
+
     return (
       <View style={styles.container}>
         <View>
@@ -40,12 +61,21 @@ export default class TypingQuestion extends React.Component {
 
         <KeyboardAvoidingView style={styles.answersWrapper} contentContainerStyle={styles.answersWrapper} >
           <TouchableOpacity
-            style={styles.submitButton}
+            style={this.state.text.length > 0 ? styles.submitButton : StyleSheet.flatten([styles.submitButton, styles.selectButton])}
             onPress={this.evaluateAnswer}
             >
-              <Text style={styles.submitText}>Submit</Text>
+              { !this.state.text.length > 0 &&
+                <Text style={styles.submitText}>Type Answer</Text>
+              }
+              { this.state.text.length > 0 &&
+                <Text style={styles.submitText}>Submit</Text>
+              }
             </TouchableOpacity>
           </KeyboardAvoidingView>
+
+          { this.state.submitted &&
+            <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={correctAnswer} />
+          }
         </View>
       )
   }
@@ -55,8 +85,8 @@ export default class TypingQuestion extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: 30,
-    marginRight: 30,
+    paddingLeft: 30,
+    paddingRight: 30,
 
     display: 'flex',
     justifyContent: 'flex-start'
@@ -104,6 +134,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  selectButton: {
+    backgroundColor: 'grey',
   },
 
   submitText: {

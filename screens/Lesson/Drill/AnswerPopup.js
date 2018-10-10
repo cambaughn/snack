@@ -33,6 +33,7 @@ const AnswerPopup = ({ correct, correctAnswer, goNextQuestion, failQuestion }) =
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
+
     flex: 1,
     display: 'flex',
     alignItems: 'center',
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
 
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height - 60,
-    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    // backgroundColor: 'yellow',
   },
 
   card: {
@@ -54,8 +55,6 @@ const styles = StyleSheet.create({
     padding: 25,
 
     borderRadius: 5,
-    // borderWidth: 1,
-    // borderColor: 'black',
 
     shadowColor: 'grey',
     shadowOffset: {width: 0, height: 2},
@@ -87,9 +86,6 @@ const styles = StyleSheet.create({
     width: 180,
     height: 60,
     borderRadius: 5,
-
-    // borderColor: 'black',
-    // borderWidth: 1,
 
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
 

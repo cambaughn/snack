@@ -71,7 +71,7 @@ export default class MultipleChoice extends React.Component {
             </View>
 
             { this.state.submitted &&
-              <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={correctAnswer} resetState={this.resetState} />
+              <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={correctAnswer} />
             }
           </View>
         )

@@ -8,6 +8,8 @@ import TopicCard from './Topic/TopicCard';
 import Drill from './Lesson/Drill/Drill';
 import LessonList from './Lesson/LessonList';
 
+import packData from '../util/dummyData/packData';
+
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
     title: 'Explore',
@@ -31,8 +33,9 @@ export default class ExploreScreen extends React.Component {
 
         <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
-          <PackCard navigation={this.props.navigation} details={{ title: 'Get Started', id: 1 }} backgroundColor={'#74b9ff'} />
-          <PackCard navigation={this.props.navigation} details={{ title: 'Adjetivos', id: 2 }} backgroundColor={'#a29bfe'} />
+          { packData.packs.map(pack => (
+            <PackCard navigation={this.props.navigation} details={pack} backgroundColor={pack.backgroundColor} key={pack.id} />
+          ))}
         </PackSlider>
 
         {/* <View style={styles.topicsHeaderWrapper}>

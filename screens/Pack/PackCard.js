@@ -1,14 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
-import lessonData from '../../util/dummyData/lessonData';
+import packData from '../../util/dummyData/packData';
 
 const PackCard = ({ navigation, details, backgroundColor }) => {
-  console.log('INFO - ', details)
   return (
     <TouchableOpacity
       style={StyleSheet.flatten([styles.container, { backgroundColor }])}
-      onPress={() => navigation.navigate('LessonList', { lessons: lessonData[`packList${details.id}`], packTitle: details.title })}
+      onPress={() => navigation.navigate('LessonList', { lessons: packData[`packList${details.id}`], packTitle: details.title, description: details.description })}
       >
       <Text style={styles.title}>{details.title}</Text>
     </TouchableOpacity>

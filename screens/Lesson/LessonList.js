@@ -24,6 +24,9 @@ export default class LessonList extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.descriptionWrapper}>
+          <Text style={styles.description}>{this.props.navigation.getParam('description')}</Text>
+        </View>
         { this.props.navigation.getParam('lessons').map(lesson => (
           <LessonListItem lesson={lesson} navigation={this.props.navigation} key={lesson.id} />
         )) }
@@ -38,22 +41,21 @@ export default class LessonList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    paddingTop: 20,
 
+    paddingTop: 20,
     paddingLeft: 30,
     paddingRight: 30,
-
   },
 
-  headerWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+  descriptionWrapper: {
+    paddingTop: 20,
+    paddingBottom: 20,
   },
 
-  header: {
+  description: {
     color: 'grey',
-    fontSize: 18,
-    fontWeight: 'bold',
-  }
+    textAlign: 'center',
+    lineHeight: 25,
+  },
+
 });

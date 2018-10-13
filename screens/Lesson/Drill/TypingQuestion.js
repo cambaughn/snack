@@ -23,13 +23,15 @@ export default class TypingQuestion extends React.Component {
   }
 
   evaluateAnswer = () => {
-    let userAnswer = this.state.text.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ");
+    let userAnswer = this.state.text.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ").trim();
+    let answers = this.props.question.answers.map(answer => answer.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ").trim());
+    console.log(userAnswer, answers)
 
     if (this.state.text.length > 0) {
       this.setState({ submitted: true });
       Keyboard.dismiss();
 
-      if (this.props.question.answers.includes(userAnswer)) {
+      if (answers.includes(userAnswer)) {
         this.setState({ correct: true });
         console.log('RIGHT');
       } else {
@@ -46,7 +48,7 @@ export default class TypingQuestion extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={styles.prompt}>{this.props.question.prompt}</Text>
+          <Text style={styles.prompt}>Translate the following</Text>
           <Text style={styles.text}>{this.props.question.text}</Text>
 
           <TextInput

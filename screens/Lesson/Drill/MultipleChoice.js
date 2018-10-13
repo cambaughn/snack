@@ -39,7 +39,7 @@ export default class MultipleChoice extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={styles.prompt}>{this.props.question.prompt}</Text>
+          <Text style={styles.prompt}>Translate the following</Text>
           <Text style={styles.text}>{this.props.question.text}</Text>
         </View>
 

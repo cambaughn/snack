@@ -13,7 +13,7 @@ const TextLesson = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar hidden />
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <View style={StyleSheet.flatten([styles.colorBlock, { backgroundColor }])}>
+        <View style={StyleSheet.flatten([styles.colorBlock, { backgroundColor: 'white' }])}>
           <View style={styles.titleWrapper}>
             <Text style={styles.title}>{lessonTitle}</Text>
           </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
 
   closeButton: {
-    color: 'rgba(255, 255, 255, 1)',
+    color: 'black',
     marginBottom: 15,
     marginTop: 20,
     fontSize: 30,
@@ -67,13 +67,14 @@ const styles = StyleSheet.create({
     height: 130,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
 
   title: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: 'bold'
+    color: 'black',
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 15,
   },
 
   body: {

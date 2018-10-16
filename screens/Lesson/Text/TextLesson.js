@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 15,
+    marginBottom: 20,
+    // fontFamily: 'Baskerville',
   },
 
   body: {

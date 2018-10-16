@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
 
     backgroundColor: '#74b9ff',
+
+    shadowColor: 'grey',
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 2,
+    shadowOpacity: 0.3,
   },
 
   title: {

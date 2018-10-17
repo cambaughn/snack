@@ -16,7 +16,7 @@ packData.packList1.push({title: 'Pronoun Practice', id: 4, type: 'drill', questi
 
 packData.packList2 = [];
 packData.packList2.push({title: 'Are You Ser-ious?', backgroundColor: '#74b9ff', id: 0, type: 'text'})
-packData.packList2.push({title: 'I am many things', id: 1, type: 'drill', questions: questions3 })
+packData.packList2.push({title: 'School Stuff', id: 1, type: 'drill', questions: questions3 })
 
 
 export default packData;

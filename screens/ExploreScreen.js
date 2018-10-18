@@ -10,6 +10,8 @@ import LessonList from './Lesson/LessonList';
 
 import packData from '../util/dummyData/packData';
 
+import db from '../firebase/firebaseConfig.js';
+
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
     title: 'Explore',
@@ -25,6 +27,17 @@ export default class ExploreScreen extends React.Component {
       color: '#2d3436',
     },
   };
+
+  constructor(props) {
+    super();
+
+    db.collection('users').get()
+    .then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        console.log(doc.data());
+      })
+    })
+  }
 
   render() {
     return (

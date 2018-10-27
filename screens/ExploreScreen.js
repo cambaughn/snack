@@ -10,7 +10,7 @@ import LessonList from './Lesson/LessonList';
 
 import packData from '../util/dummyData/packData';
 
-import db from '../firebase/firebaseConfig.js';
+import db from '../firebase/firebaseInit.js';
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
@@ -31,12 +31,30 @@ export default class ExploreScreen extends React.Component {
   constructor(props) {
     super();
 
-    db.collection('users').get()
+    db.collection('packs').get()
     .then(snapshot => {
       snapshot.docs.forEach(doc => {
-        console.log(doc.data());
+        // console.log(doc.data());
+        doc.data().lessons[0].get().then(snapshot => {
+          console.log(snapshot.data())
+        })
+        // doc.data().lessons.forEach(lesson => {
+        //   console.log(lesson);
+        // })
       })
     })
+
+    // db.collection('users').add({
+    //   name: 'Puppycat',
+    //   languages: ['puppy', 'cat']
+    // })
+
+    // db.collection('users').get()
+    // .then(snapshot => {
+    //   snapshot.docs.forEach(doc => {
+    //     console.log(doc.data());
+    //   })
+    // })
   }
 
   render() {

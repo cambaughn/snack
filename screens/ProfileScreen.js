@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
 
-import db from '../firebase/firebaseConfig.js';
+import db from '../firebase/firebaseInit.js';
 
 
 export default class ProfileScreen extends React.Component {

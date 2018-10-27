@@ -4,11 +4,11 @@ import { Feather } from '@expo/vector-icons';
 
 const LessonListItem = ({ navigation, lesson, index }) => {
 
-  let typeIcon = lesson.type === 'text' ? 'book' : 'zap';
-  let route = lesson.type === 'text' ? 'TextLesson' : 'Drill';
+  let typeIcon = lesson.type === 'reading' ? 'book' : 'zap';
+  let route = lesson.type === 'reading' ? 'TextLesson' : 'Drill';
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(route, { lessonTitle: lesson.title, backgroundColor: lesson.backgroundColor, questions: lesson.questions })}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(route, { lessonTitle: lesson.title })}>
       <Text style={styles.title}>{index + 1}. {lesson.title}</Text>
       <Feather name={typeIcon} size={18} />
 

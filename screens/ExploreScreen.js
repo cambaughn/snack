@@ -9,6 +9,7 @@ import Drill from './Lesson/Drill/Drill';
 import LessonList from './Lesson/LessonList';
 
 import packData from '../util/dummyData/packData';
+import { getPacks } from '../util/packHelpers';
 
 import db from '../firebase/firebaseInit.js';
 
@@ -31,30 +32,11 @@ export default class ExploreScreen extends React.Component {
   constructor(props) {
     super();
 
-    db.collection('packs').get()
-    .then(snapshot => {
-      snapshot.docs.forEach(doc => {
-        // console.log(doc.data());
-        doc.data().lessons[0].get().then(snapshot => {
-          console.log(snapshot.data())
-        })
-        // doc.data().lessons.forEach(lesson => {
-        //   console.log(lesson);
-        // })
-      })
-    })
+    this.state = {
+      packs: [],
+    }
 
-    // db.collection('users').add({
-    //   name: 'Puppycat',
-    //   languages: ['puppy', 'cat']
-    // })
-
-    // db.collection('users').get()
-    // .then(snapshot => {
-    //   snapshot.docs.forEach(doc => {
-    //     console.log(doc.data());
-    //   })
-    // })
+    getPacks(packs => this.setState({ packs }));
   }
 
   render() {
@@ -64,7 +46,7 @@ export default class ExploreScreen extends React.Component {
 
         <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
-          { packData.packs.map(pack => (
+          { this.state.packs.map(pack => (
             <PackCard navigation={this.props.navigation} details={pack} backgroundColor={pack.backgroundColor} key={pack.id} />
           ))}
         </PackSlider>

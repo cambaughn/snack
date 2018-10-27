@@ -4,9 +4,11 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-nati
 import packData from '../../util/dummyData/packData';
 
 const PackCard = ({ navigation, details, backgroundColor }) => {
+  let containerStyle = backgroundColor ? StyleSheet.flatten([styles.container, { backgroundColor }]) : styles.container;
+
   return (
     <TouchableOpacity
-      style={StyleSheet.flatten([styles.container, { backgroundColor }])}
+      style={containerStyle}
       onPress={() => navigation.navigate('LessonList', { lessons: packData[`packList${details.id}`], packTitle: details.title, description: details.description })}
       >
       <Text style={styles.title}>{details.title}</Text>
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 5,
 
-    backgroundColor: '#74b9ff',
+    backgroundColor: 'black',
 
     shadowColor: 'grey',
     shadowOffset: {width: 0, height: 2},

@@ -27,8 +27,8 @@ export default class LessonList extends React.Component {
         <View style={styles.descriptionWrapper}>
           <Text style={styles.description}>{this.props.navigation.getParam('description')}</Text>
         </View>
-        { this.props.navigation.getParam('lessons').map(lesson => (
-          <LessonListItem lesson={lesson} navigation={this.props.navigation} key={lesson.id} />
+        { this.props.navigation.getParam('lessons').map((lesson, index) => (
+          <LessonListItem lesson={lesson} navigation={this.props.navigation} key={lesson.id} index={index} />
         )) }
       </ScrollView>
     )

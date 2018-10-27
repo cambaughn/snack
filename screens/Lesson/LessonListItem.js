@@ -2,14 +2,14 @@ import React from 'react';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const LessonListItem = ({ navigation, lesson }) => {
+const LessonListItem = ({ navigation, lesson, index }) => {
 
   let typeIcon = lesson.type === 'text' ? 'book' : 'zap';
   let route = lesson.type === 'text' ? 'TextLesson' : 'Drill';
 
   return (
     <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(route, { lessonTitle: lesson.title, backgroundColor: lesson.backgroundColor, questions: lesson.questions })}>
-      <Text style={styles.title}>{lesson.title}</Text>
+      <Text style={styles.title}>{index + 1}. {lesson.title}</Text>
       <Feather name={typeIcon} size={18} />
 
     </TouchableOpacity>

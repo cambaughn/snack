@@ -47,7 +47,7 @@ export default class ExploreScreen extends React.Component {
         <Text style={styles.sectionHeader}>Featured Packs</Text>
         <PackSlider>
           { this.state.packs.map(pack => (
-            <PackCard navigation={this.props.navigation} details={pack} backgroundColor={pack.backgroundColor} key={pack.id} />
+            <PackCard navigation={this.props.navigation} pack={pack} key={pack.id} />
           ))}
         </PackSlider>
 

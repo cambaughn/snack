@@ -1,13 +1,18 @@
 import React from 'react';
 import { View, ScrollView, Text, StyleSheet } from 'react-native';
 
+// Components
 import LessonListItem from './LessonListItem';
+
+// Utility functions
+import { getLessons } from '../../util/lessonHelpers';
+
 
 export default class LessonList extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.getParam('packTitle'),
+      title: navigation.getParam('pack').title,
       headerStyle: {
         backgroundColor: 'white',
         borderBottomWidth: 0,
@@ -20,14 +25,28 @@ export default class LessonList extends React.Component {
     };
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      lessons: [],
+    }
+  }
+
+  componentWillMount = () => {
+    getLessons(this.props.navigation.getParam('pack').id, (lessons) => {
+      this.setState({ lessons });
+    })
+  }
+
 
   render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.descriptionWrapper}>
-          <Text style={styles.description}>{this.props.navigation.getParam('description')}</Text>
+          <Text style={styles.description}>{this.props.navigation.getParam('pack').description}</Text>
         </View>
-        { this.props.navigation.getParam('lessons').map((lesson, index) => (
+        { this.state.lessons.map((lesson, index) => (
           <LessonListItem lesson={lesson} navigation={this.props.navigation} key={lesson.id} index={index} />
         )) }
       </ScrollView>

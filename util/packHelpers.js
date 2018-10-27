@@ -6,7 +6,7 @@ const getPacks = (callback) => {
   .then(snapshot => {
     let packs = [];
     snapshot.docs.forEach(doc => {
-      packs.push(doc.data());
+      packs.push({ ...doc.data(), id: doc.id });
     })
     callback(packs);
   })

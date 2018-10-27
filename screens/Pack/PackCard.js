@@ -3,15 +3,15 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-nati
 
 import packData from '../../util/dummyData/packData';
 
-const PackCard = ({ navigation, details, backgroundColor }) => {
+const PackCard = ({ navigation, pack, backgroundColor }) => {
   let containerStyle = backgroundColor ? StyleSheet.flatten([styles.container, { backgroundColor }]) : styles.container;
 
   return (
     <TouchableOpacity
       style={containerStyle}
-      onPress={() => navigation.navigate('LessonList', { lessons: packData[`packList${details.id}`], packTitle: details.title, description: details.description })}
+      onPress={() => navigation.navigate('LessonList', { pack })}
       >
-      <Text style={styles.title}>{details.title}</Text>
+      <Text style={styles.title}>{pack.title}</Text>
     </TouchableOpacity>
   )
 }

@@ -3,10 +3,15 @@ import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions, Alert } from
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-navigation';
 
+// Components
 import lessonText from '../../../util/lessonText.json';
 import MultipleChoice from './MultipleChoice';
 import TypingQuestion from './TypingQuestion';
 import FinishedDrill from './FinishedDrill';
+
+// Utility functions
+import { getQuestions, createQuestions } from '../../../util/questionHelpers';
+
 
 export default class Drill extends React.Component {
   static navigationOptions = {
@@ -18,9 +23,17 @@ export default class Drill extends React.Component {
     super(props);
 
     this.state = {
-      questions: this.props.navigation.getParam('questions'),
+      questions: [],
       pointer: 0,
     }
+  }
+
+  componentWillMount = () => {
+    getQuestions(this.props.navigation.getParam('lesson').id, (questions) => {
+      createQuestions(questions, (questions) => {
+        this.setState({ questions });
+      })
+    })
   }
 
   closeModal = () => {
@@ -32,7 +45,6 @@ export default class Drill extends React.Component {
   }
 
   failQuestion = () => {
-    console.log('FAILED QUESTION')
     let q = this.state.questions;
     q.push(...q.splice(this.state.pointer, 1));
     this.setState({ questions: q });

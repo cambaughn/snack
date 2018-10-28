@@ -66,6 +66,8 @@ export default class ExploreScreen extends React.Component {
   }
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -81,20 +83,9 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
 
-<<<<<<< HEAD
   sectionHeader: {
     fontSize: 18,
     color: 'gray',
-=======
-  googleButton: {
-    width: Dimensions.get('window').width / 2,
-    height: 30,
-    backgroundColor: 'blue',
-  },
-
-  text: {
-    fontSize: 30,
->>>>>>> Add initial user sign-in
     fontWeight: 'bold',
 
     marginBottom: 15,

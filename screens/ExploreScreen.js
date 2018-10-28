@@ -2,16 +2,17 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View, Dimensions, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
+// Components
 import PackCard from './Pack/PackCard';
 import PackSlider from './Pack/PackSlider';
 import TopicCard from './Topic/TopicCard';
 import Drill from './Lesson/Drill/Drill';
 import LessonList from './Lesson/LessonList';
 
-import packData from '../util/dummyData/packData';
+// Utility functions
 import { getPacks } from '../util/packHelpers';
-
 import db from '../firebase/firebaseInit.js';
+
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
@@ -80,9 +81,20 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
 
+<<<<<<< HEAD
   sectionHeader: {
     fontSize: 18,
     color: 'gray',
+=======
+  googleButton: {
+    width: Dimensions.get('window').width / 2,
+    height: 30,
+    backgroundColor: 'blue',
+  },
+
+  text: {
+    fontSize: 30,
+>>>>>>> Add initial user sign-in
     fontWeight: 'bold',
 
     marginBottom: 15,

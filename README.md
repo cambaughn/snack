@@ -8,6 +8,7 @@
 
 ### Setting up untracked files for API
 - firebase/firebaseConfig.js
+- secretCodes.js
 
 ### Running the app
 

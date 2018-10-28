@@ -2,12 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import lessonText from '../../../util/lessonText.json';
 
-
-const TextLesson = ({ navigation }) => {
-  let lessonTitle = navigation.getParam('lessonTitle');
-  let backgroundColor = navigation.getParam('backgroundColor');
+const ReadingLesson = ({ navigation }) => {
+  let lesson = navigation.getParam('lesson');
 
   return (
     <View style={styles.container}>
@@ -15,11 +12,11 @@ const TextLesson = ({ navigation }) => {
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={StyleSheet.flatten([styles.colorBlock, { backgroundColor: 'white' }])}>
           <View style={styles.titleWrapper}>
-            <Text style={styles.title}>{lessonTitle}</Text>
+            <Text style={styles.title}>{lesson.title}</Text>
           </View>
           <Feather name='x' onPress={() => navigation.goBack()} style={styles.closeButton} />
         </View>
-        <Text style={styles.body}>{lessonText[lessonTitle.toLowerCase().replace(/[^a-zA-Z]+/g, '')]}</Text>
+        <Text style={styles.body}>{lesson.text}</Text>
 
       </ScrollView>
     </View>
@@ -80,14 +77,14 @@ const styles = StyleSheet.create({
 
   body: {
     color: '#2d3436',
-    fontSize: 18,
-    marginRight: 30,
-    marginLeft: 30,
+    fontSize: 17.5,
+    marginRight: 20,
+    marginLeft: 20,
     marginBottom: 30,
-    lineHeight: 30,
+    lineHeight: 25,
   },
 });
 
 
 
-export default TextLesson;
+export default ReadingLesson;

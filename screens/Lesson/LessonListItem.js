@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 const LessonListItem = ({ navigation, lesson, index }) => {
 
   let typeIcon = lesson.type === 'reading' ? 'book' : 'zap';
-  let route = lesson.type === 'reading' ? 'TextLesson' : 'Drill';
+  let route = lesson.type === 'reading' ? 'ReadingLesson' : 'Drill';
 
   return (
     <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(route, { lesson: lesson })}>

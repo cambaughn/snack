@@ -39,11 +39,11 @@ function questions(state = [], action) {
 }
 
 
-// const snackApp = combineReducers({
-//   user,
-//   packs,
-//   lessons,
-//   questions,
-// });
+const snackApp = combineReducers({
+  user,
+  packs,
+  lessons,
+  questions,
+});
 
-export { user, packs, lessons, questions };
+export { snackApp };

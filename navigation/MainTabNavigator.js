@@ -1,22 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform, View, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { reduxifyNavigator, createReactNavigationReduxMiddleware, createNavigationReducer } from 'react-navigation-redux-helpers';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 
-// Components
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ReadingLesson from '../screens/Lesson/Reading/ReadingLesson';
 import LessonList from '../screens/Lesson/LessonList';
+
 import Drill from '../screens/Lesson/Drill/Drill';
 
-// redux
+import store from '../redux/store';
 
-import { user } from '../redux/reducers';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -70,7 +67,7 @@ const MainStack = createBottomTabNavigator({
 });
 
 
-const TabNavigator = createStackNavigator(
+let StackNav = createStackNavigator(
   {
     Main: {
       screen: MainStack,
@@ -89,38 +86,11 @@ const TabNavigator = createStackNavigator(
 );
 
 
-
-
-
-const navReducer = createNavigationReducer(TabNavigator);
-const appReducer = combineReducers({
-  nav: navReducer,
-  user: user,
-});
-
-// Note: createReactNavigationReduxMiddleware must be run before reduxifyNavigator
-const middleware = createReactNavigationReduxMiddleware(
-  "root",
-  state => state.nav,
-);
-
-const App = reduxifyNavigator(AppNavigator, "root");
-const mapStateToProps = (state) => ({
-  state: state.nav,
-});
-
-const AppWithNavigationState = connect(mapStateToProps)(App);
-
-const store = createStore(
-  appReducer,
-  applyMiddleware(middleware),
-);
-
-class Root extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigationState />
+        <StackNav />
       </Provider>
     );
   }

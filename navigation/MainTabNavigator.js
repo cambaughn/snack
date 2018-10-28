@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform, View, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -11,6 +12,7 @@ import LessonList from '../screens/Lesson/LessonList';
 
 import Drill from '../screens/Lesson/Drill/Drill';
 
+import store from '../redux/store';
 
 
 const HomeStack = createStackNavigator({
@@ -65,7 +67,7 @@ const MainStack = createBottomTabNavigator({
 });
 
 
-export default createStackNavigator(
+let StackNav = createStackNavigator(
   {
     Main: {
       screen: MainStack,
@@ -82,3 +84,14 @@ export default createStackNavigator(
     headerMode: 'none',
   }
 );
+
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <StackNav />
+      </Provider>
+    );
+  }
+}

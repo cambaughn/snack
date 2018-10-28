@@ -1,10 +1,11 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 
 import db from '../firebase/firebaseInit.js';
+import { updateUser } from '../redux/actionCreators';
 
-
-export default class ProfileScreen extends React.Component {
+class ProfileScreen extends React.Component {
   static navigationOptions = {
     title: 'Profile',
     header: null
@@ -62,3 +63,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
+
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUser: user => dispatch(updateUser(user))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileScreen);

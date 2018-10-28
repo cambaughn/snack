@@ -23,7 +23,6 @@ export default class MultipleChoice extends React.Component {
   evaluateAnswer = () => {
     let correctAnswer = this.props.question.correctAnswer;
     if (this.state.selected) {
-      console.log('DEBUG => ', correctAnswer)
       this.setState({ submitted: true });
       if (this.state.selected === correctAnswer) { // if answered correctly
         this.setState({ correct: true });

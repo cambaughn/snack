@@ -34,7 +34,7 @@ const createQuestions = (questionData, callback) => {
         question.correctAnswers = data.spanish_answers;
       }
     } else {
-      question.type = 'drill';
+      question.type = 'multipleChoice';
       if (flipCoin()) {
         question.language = 'spanish';
         question.text = data.spanish_answers[0];

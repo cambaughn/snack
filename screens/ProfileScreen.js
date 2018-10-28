@@ -34,8 +34,8 @@ class ProfileScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.textWrapper}>
-          <Text>{this.state.name}</Text>
-          <Text>{this.state.languages}</Text>
+          <Text>{this.props.user.name}</Text>
+          <Text>{this.props.user.languages}</Text>
           <Text style={styles.text}>Coming Soon!</Text>
         </View>
       </ScrollView>

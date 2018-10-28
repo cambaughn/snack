@@ -67,7 +67,7 @@ const MainStack = createBottomTabNavigator({
 });
 
 
-let StackNav = createStackNavigator(
+export default createStackNavigator(
   {
     Main: {
       screen: MainStack,
@@ -84,14 +84,3 @@ let StackNav = createStackNavigator(
     headerMode: 'none',
   }
 );
-
-
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <StackNav />
-      </Provider>
-    );
-  }
-}

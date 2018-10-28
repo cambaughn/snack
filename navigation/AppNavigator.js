@@ -1,12 +1,26 @@
 import React from 'react';
 import { createSwitchNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
 
-import App from './MainTabNavigator';
+import MainTabNavigator from './MainTabNavigator';
+
+import store from '../redux/store';
 
 console.ignoredYellowBox = ['Remote debugger'];
 
-export default createSwitchNavigator({
+let SwitchNav = createSwitchNavigator({
   // You could add another route here for authentication.
   // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-  Main: App,
+  Main: MainTabNavigator,
 });
+
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <SwitchNav />
+      </Provider>
+    );
+  }
+}

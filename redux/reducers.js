@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 
-function user(state = { name: 'Obi Wan', languages: 'the force' }, action) {
+function user(state = {}, action) {
   switch (action.type) {
     case 'UPDATE_USER':
       return action.user;

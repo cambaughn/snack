@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, View, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import { Provider } from 'react-redux';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';

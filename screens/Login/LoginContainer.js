@@ -9,6 +9,7 @@ import Login from './Login';
 import db from '../../firebase/firebaseInit.js';
 import { updateUser } from '../../redux/actionCreators';
 import signInWithGoogleAsync from '../../util/GoogleSignIn';
+import { addUserToDatabase } from '../../util/loginHelpers';
 
 
 class LoginContainer extends React.Component {
@@ -17,15 +18,8 @@ class LoginContainer extends React.Component {
     header: null
   };
 
-  constructor(props) {
-    super(props);
-    console.log('initial user => ', this.props.user);
-  }
-
   componentDidUpdate = () => {
-    // check if user, and if so, navigate to app
-    console.log('user has logged in => ', this.props.user);
-
+    // check if user is logged in and loaded into redux, and if so, navigate to app
     // NOTE: need to add user to database during login
     // NOTE: need to add user token to local storage (asyncstorage)
     if (this.props.user.email) {
@@ -33,9 +27,20 @@ class LoginContainer extends React.Component {
     }
   }
 
+  login = (callback) => {
+    // sign in with google first
+    signInWithGoogleAsync(user => {
+      addUserToDatabase(user, user => {
+        callback(user);
+      })
+    })
+    // add user to our database
+    // add to redux and let them use the app!
+  }
+
   render() {
     return (
-      <Login signIn={() => signInWithGoogleAsync( user => this.props.updateUser(user)) } />
+      <Login signIn={() => this.login( user => this.props.updateUser(user)) } />
     )
   }
 }
@@ -49,10 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUser: user => {
-      console.log('dispatching!')
-      dispatch(updateUser(user))
-    }
+    updateUser: user => dispatch(updateUser(user))
   }
 }
 

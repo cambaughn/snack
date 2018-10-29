@@ -1,0 +1,44 @@
+import React from 'react';
+import { View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
+
+export default class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        <View style={styles.textWrapper}>
+          <Text>{this.props.user.name}</Text>
+          <Text>{this.props.user.languages}</Text>
+          <Text style={styles.text}>Coming Soon!</Text>
+        </View>
+      </ScrollView>
+    )
+  }
+}
+
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+
+  textWrapper: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    height: Dimensions.get('window').height,
+  },
+
+  text: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  }
+});

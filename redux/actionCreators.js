@@ -4,9 +4,10 @@
 
 
 function updateUser(user) {
+  console.log('updating user in actions! ', user)
   return {
     type: 'UPDATE_USER',
-    users
+    user
   }
 }
 

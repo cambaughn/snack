@@ -19,9 +19,10 @@ class LoginContainer extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log('initial user => ', this.props.user);
   }
 
-  componentWillReceiveProps = () => {
+  componentDidUpdate = () => {
     // check if user, and if so, navigate to app
     console.log('user has logged in => ', this.props.user);
 
@@ -48,7 +49,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUser: user => dispatch(updateUser(user))
+    updateUser: user => {
+      console.log('dispatching!')
+      dispatch(updateUser(user))
+    }
   }
 }
 

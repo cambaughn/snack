@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { AsyncStorage } from "react-native";
 
 // Utility Functions
 import { updateUser } from '../../redux/actionCreators';
 import signInWithGoogleAsync from '../../util/GoogleSignIn';
+import { retrieveData, getUserbyToken } from '../../util/loginHelpers';
 
 
 class LoadingScreen extends React.Component {
@@ -15,18 +17,30 @@ class LoadingScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    // AsyncStorage.clear();
   }
 
   componentDidMount = () => {
-    // check if user, and if so, navigate to app
-    // else, navigate to auth screen
+    this.determinePath();
+  }
 
-    console.log(!!this.props.user);
+  componentDidUpdate = () => {
+    this.determinePath();
+  }
 
-    if (this.props.user.email) {
+  determinePath = () => {
+    if (this.props.user.email) { // already signed into the app
       this.props.navigation.navigate('Main');
-    } else {
-      this.props.navigation.navigate('Auth');
+    } else { // not signed into memory - check AsyncStorage
+      retrieveData()
+      .then(token => {
+        getUserbyToken(token, user => {
+          this.props.updateUser(user);
+        })
+      })
+      .catch(() => {
+        this.props.navigation.navigate('Auth');
+      })
     }
   }
 

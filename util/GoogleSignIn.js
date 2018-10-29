@@ -9,14 +9,15 @@ export default async function signInWithGoogleAsync(callback) {
     });
 
     if (result.type === 'success') {
-      console.log('User access token => ', result.accessToken);
-      console.log('User info => ', result.user);
+      result.user.google_id = result.user.id;
+      delete result.user.id;
+      result.user.accessToken = result.accessToken;
       callback(result.user);
-      return result.accessToken;
     } else {
       return {cancelled: true};
     }
-  } catch(e) {
+  } catch(error) {
+    console.log(error)
     return {error: true};
   }
 }

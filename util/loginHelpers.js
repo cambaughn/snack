@@ -8,7 +8,7 @@ const addUserToDatabase = (user, callback) => {
       if (doc.exists) { // user already in database
         callback(doc.data(), 'exists');
       } else { // first time signing in, need to add the user
-        db.collection('users').doc(user.email).set({ ...user, coins: 0, languages: [] })
+        db.collection('users').doc(user.email).set({ ...user, coins: 0, languages: [], lessons_completed: 0 })
         .then(() => {
           callback(user, 'new_user');
         })

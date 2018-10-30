@@ -28,9 +28,20 @@ export default class UserProfile extends React.Component {
               <Feather name={'check-circle'} style={styles.icon} />
               <Text style={styles.subhead}>Lessons Completed</Text>
             </View>
-            <Text>
-              <Text style={styles.big}>132</Text>
-              <Text style={styles.small}>Lessons</Text>
+            <Text style={styles.dataWrapper}>
+              <Text style={styles.big}>{this.props.user.lessons_completed}</Text>
+              {/* <Text style={styles.small}>  Lessons</Text> */}
+            </Text>
+          </View>
+
+          <View style={styles.statWrapper}>
+            <View style={styles.subheadWrapper}>
+              <Feather name={'stop-circle'} style={styles.icon} />
+              <Text style={styles.subhead}>Coin Count</Text>
+            </View>
+            <Text style={styles.dataWrapper}>
+              <Text style={styles.big}>{this.props.user.coins}</Text>
+              {/* <Text style={styles.small}>  Lessons</Text> */}
             </Text>
           </View>
 
@@ -88,16 +99,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  statWrapper: {
+    marginBottom: 20,
+  },
+
   subheadWrapper: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+
   },
 
   icon: {
     fontSize: 40,
-    marginRight: 20,
+    marginRight: 15,
     color: '#ff7675',
   },
 
@@ -110,11 +126,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#b2bec3',
 
-    marginRight: 40,
+    marginRight: 10,
   },
 
   small: {
-
+    marginLeft: 30,
   },
 
   dataWrapper: {
@@ -123,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
 
-    backgroundColor: 'yellow'
+    paddingLeft: 45,
   },
 
 });

@@ -10,10 +10,18 @@ import db from '../firebase/firebaseInit.js';
 import { updateUser } from '../redux/actionCreators';
 
 class ProfileScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Profile',
-    header: null
-  };
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam('profileTitle'),
+      header: null
+    }
+  }
+
+  componentDidMount = () => {
+    this.props.navigation.setParams({
+     profileTitle: this.props.user.givenName,
+    })
+  }
 
   render() {
     return (

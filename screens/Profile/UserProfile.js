@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import { Feather } from '@expo/vector-icons';
+
 
 export default class UserProfile extends React.Component {
   constructor(props) {
@@ -8,13 +11,32 @@ export default class UserProfile extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.textWrapper}>
-          <Text>{this.props.user.name}</Text>
-          <Text>{this.props.user.languages}</Text>
-          <Text style={styles.text}>Coming Soon!</Text>
+      <SafeAreaView style={styles.container}>
+
+        <View style={styles.top}>
+          <View style={styles.imageWrapper}>
+            <Image source={{uri: this.props.user.photoUrl}} style={styles.image} />
+          </View>
+          <Text style={styles.name}>{this.props.user.name}</Text>
         </View>
-      </ScrollView>
+
+        <ScrollView style={styles.scroll}>
+
+          <Text style={styles.header}>Stats</Text>
+          <View style={styles.statWrapper}>
+            <View style={styles.subheadWrapper}>
+              <Feather name={'check-circle'} style={styles.icon} />
+              <Text style={styles.subhead}>Lessons Completed</Text>
+            </View>
+            <Text>
+              <Text style={styles.big}>132</Text>
+              <Text style={styles.small}>Lessons</Text>
+            </Text>
+          </View>
+
+        </ScrollView>
+
+      </SafeAreaView>
     )
   }
 }
@@ -26,19 +48,82 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    paddingTop: 60,
   },
 
-  textWrapper: {
-    flex: 1,
+  top: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
 
-    height: Dimensions.get('window').height,
+    paddingLeft: 30,
+    marginBottom: 30,
   },
 
-  text: {
-    fontSize: 30,
+  imageWrapper: {
+    borderRadius: 100,
+    overflow: 'hidden',
+    marginRight: 20,
+  },
+
+  image: {
+    width: 60,
+    height: 60,
+  },
+
+  name: {
+    fontSize: 20,
+  },
+
+  scroll: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingLeft: 30,
+  },
+
+  header: {
+    fontSize: 35,
     fontWeight: 'bold',
-  }
+    marginBottom: 20,
+  },
+
+  subheadWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+
+  icon: {
+    fontSize: 40,
+    marginRight: 20,
+    color: '#ff7675',
+  },
+
+  subhead: {
+    fontSize: 18,
+  },
+
+  big: {
+    fontSize: 75,
+    fontWeight: 'bold',
+    color: '#b2bec3',
+
+    marginRight: 40,
+  },
+
+  small: {
+
+  },
+
+  dataWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+
+    backgroundColor: 'yellow'
+  },
+
 });

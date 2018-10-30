@@ -61,7 +61,7 @@ ProfileStack.navigationOptions = {
 
 const MainStack = createBottomTabNavigator({
   // HomeStack,
-  // ExploreStack,
+  ExploreStack,
   ProfileStack,
 });
 

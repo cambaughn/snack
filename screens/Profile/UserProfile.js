@@ -29,7 +29,7 @@ export default class UserProfile extends React.Component {
               <Text style={styles.subhead}>Lessons Completed</Text>
             </View>
             <Text style={styles.dataWrapper}>
-              <Text style={styles.big}>{this.props.user.lessons_completed}</Text>
+              <Text style={styles.big}>{this.props.user.completed_lessons}</Text>
               {/* <Text style={styles.small}>  Lessons</Text> */}
             </Text>
           </View>

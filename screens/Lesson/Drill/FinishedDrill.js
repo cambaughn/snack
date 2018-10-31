@@ -4,12 +4,14 @@ import { Feather } from '@expo/vector-icons';
 
 // Helper Functions
 import { completeLesson } from '../../../util/lessonHelpers';
+import { getUser } from '../../../util/userHelpers';
 
 
 export default class FinishedDrill extends React.Component {
 
   componentDidMount() {
-    completeLesson(this.props.lessonId, this.props.user.id, this.props.user.coins, 10);
+    completeLesson(this.props.lessonId, this.props.user.id, this.props.user.coins, 10, this.props.user.completed_lessons);
+    getUser(this.props.user.id, this.props.updateUser)
   }
 
   render() {

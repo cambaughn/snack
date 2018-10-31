@@ -12,6 +12,7 @@ import FinishedDrill from './FinishedDrill';
 
 // Utility functions
 import { getQuestions, createQuestions } from '../../../util/questionHelpers';
+import { updateUser } from '../../../redux/actionCreators';
 
 
 class Drill extends React.Component {
@@ -86,7 +87,7 @@ class Drill extends React.Component {
         }
 
         { currentQuestion === 'finished' &&
-          <FinishedDrill closeModal={this.closeModal} user={this.props.user} lessonId={this.props.navigation.getParam('lesson').id} />
+          <FinishedDrill closeModal={this.closeModal} user={this.props.user} lessonId={this.props.navigation.getParam('lesson').id} updateUser={this.props.updateUser} />
         }
       </SafeAreaView>
     )
@@ -135,6 +136,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateUser: user => dispatch(updateUser(user))
   }
 }
 

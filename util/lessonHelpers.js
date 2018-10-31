@@ -19,7 +19,7 @@ const getLessons = (packId, callback) => {
 }
 
 // Complete a lesson
-const completeLesson = (lessonId, userId, coinCount, coinsToAdd ) => {
+const completeLesson = (lessonId, userId, coinCount, coinsToAdd, completedLessons ) => {
   console.log('completing lesson ', lessonId, userId);
   db.collection('completed_lessons').add({
     lesson_id: lessonId,
@@ -28,12 +28,25 @@ const completeLesson = (lessonId, userId, coinCount, coinsToAdd ) => {
   .then(() => {
     console.log('Completed lesson');
     addCoins(userId, coinCount, coinsToAdd);
+    incrementLessonCount(userId, completedLessons);
   })
   .catch(error => {
     console.log(error);
   })
+}
 
-  // add to completed lesson and increment counter on user profile
+
+// Increment the completed_lessons field on the user document
+const incrementLessonCount = (userId, lessonCount) => {
+  db.collection('users').doc(userId).update({
+    completed_lessons: lessonCount + 1
+  })
+  .then(() => {
+    console.log('Incremented lessons');
+  })
+  .catch(error => {
+    console.log(error);
+  })
 }
 
 

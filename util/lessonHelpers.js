@@ -1,5 +1,9 @@
 import db from '../firebase/firebaseInit';
 
+import { addCoins } from './coinHelpers';
+
+
+
 // Get lessons for specific pack
 const getLessons = (packId, callback) => {
   db.collection('lessons').where('pack_id', '==', packId).orderBy("order").get()
@@ -14,5 +18,23 @@ const getLessons = (packId, callback) => {
   })
 }
 
+// Complete a lesson
+const completeLesson = (lessonId, userId, coinCount, coinsToAdd ) => {
+  console.log('completing lesson ', lessonId, userId);
+  db.collection('completed_lessons').add({
+    lesson_id: lessonId,
+    user_id: userId
+  })
+  .then(() => {
+    console.log('Completed lesson');
+    addCoins(userId, coinCount, coinsToAdd);
+  })
+  .catch(error => {
+    console.log(error);
+  })
 
-export { getLessons }
+  // add to completed lesson and increment counter on user profile
+}
+
+
+export { getLessons, completeLesson }

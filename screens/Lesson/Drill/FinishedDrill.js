@@ -1,20 +1,38 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-const FinishedDrill = ({ closeModal }) => {
+// Helper Functions
+import { completeLesson } from '../../../util/lessonHelpers';
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Nice Work!</Text>
 
-      <TouchableOpacity
-        style={styles.closeButton}
-        onPress={closeModal}
-        >
-          <Text style={styles.closeText}>Finish</Text>
-        </TouchableOpacity>
-    </View>
-  )
+export default class FinishedDrill extends React.Component {
+
+  componentDidMount() {
+    completeLesson(this.props.lessonId, this.props.user.id, this.props.user.coins, 10);
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.header}>Nice Work!</Text>
+
+        <View style={styles.coinWrapper}>
+          <Text style={styles.bigNumber}>+10</Text>
+          <Feather name={'stop-circle'} style={styles.icon} />
+        </View>
+
+        <Text style={styles.subhead}>Here are some more coins</Text>
+
+        <TouchableOpacity
+          style={styles.closeButton}
+          onPress={this.props.closeModal}
+          >
+            <Text style={styles.closeText}>Finish</Text>
+          </TouchableOpacity>
+        </View>
+      )
+  }
 }
 
 
@@ -33,9 +51,30 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 25,
     fontWeight: 'bold',
+    marginBottom: 20,
+  },
 
-    // marginTop: 50,
-    marginBottom: 50,
+  subhead: {
+    fontSize: 20,
+  },
+
+  coinWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+
+    marginBottom: 20,
+  },
+
+  icon: {
+    fontSize: 40,
+    color: '#ff7675',
+  },
+
+  bigNumber: {
+    fontSize: 35,
+    marginRight: 10,
   },
 
   closeButton: {
@@ -57,7 +96,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-
-
-export default FinishedDrill;

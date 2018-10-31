@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar, Dimensions, Alert } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-navigation';
+import { connect } from 'react-redux';
 
 // Components
 import lessonText from '../../../util/lessonText.json';
@@ -13,7 +14,7 @@ import FinishedDrill from './FinishedDrill';
 import { getQuestions, createQuestions } from '../../../util/questionHelpers';
 
 
-export default class Drill extends React.Component {
+class Drill extends React.Component {
   static navigationOptions = {
     gesturesEnabled: false,
     header: null,
@@ -85,7 +86,7 @@ export default class Drill extends React.Component {
         }
 
         { currentQuestion === 'finished' &&
-          <FinishedDrill closeModal={this.closeModal} />
+          <FinishedDrill closeModal={this.closeModal} user={this.props.user} lessonId={this.props.navigation.getParam('lesson').id} />
         }
       </SafeAreaView>
     )
@@ -123,3 +124,21 @@ const styles = StyleSheet.create({
 
 
 });
+
+
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Drill);

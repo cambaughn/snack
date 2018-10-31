@@ -26,7 +26,8 @@ const addUserToDatabase = (user, callback) => {
 const getUserbyToken = (google_id, callback) => {
   db.collection('users').where('google_id', '==', google_id).get()
   .then(snapshot => {
-    let user = snapshot.docs[0].data();
+    console.log('usererrerererr', snapshot.docs[0]);
+    let user = { ...snapshot.docs[0].data(), id: snapshot.docs[0].id };
     callback(user);
   })
   .catch(function(error) {

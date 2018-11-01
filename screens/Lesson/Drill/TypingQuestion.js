@@ -3,6 +3,10 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, Keyboa
 
 import AnswerPopup from './AnswerPopup';
 
+// Helper Functions
+import { streamline, evaluateTypingQuestion } from '../../../util/questionEval';
+
+
 export default class TypingQuestion extends React.Component {
 
   constructor(props) {
@@ -22,9 +26,17 @@ export default class TypingQuestion extends React.Component {
     Keyboard.dismiss();
   }
 
+  setSubmitted = () => {
+    this.setState({ submitted: true });
+  }
+
+  setAnswerAs = (value) => {
+    this.setState({ correct: value });
+  }
+
   evaluateAnswer = () => {
-    let userAnswer = this.state.text.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ").trim();
-    let answers = this.props.question.correctAnswers.map(answer => answer.replace(/[^a-z0-9]/gmi, " ").replace(/\s{2,}/g," ").trim());
+    let userAnswer = streamline(this.state.text);
+    let answers = this.props.question.correctAnswers.map(answer => streamline(answer));
 
     if (this.state.text.length > 0) {
       this.setState({ submitted: true });
@@ -61,7 +73,7 @@ export default class TypingQuestion extends React.Component {
         <KeyboardAvoidingView style={styles.answersWrapper} contentContainerStyle={styles.answersWrapper} >
           <TouchableOpacity
             style={this.state.text.length > 0 ? styles.submitButton : StyleSheet.flatten([styles.submitButton, styles.selectButton])}
-            onPress={this.evaluateAnswer}
+            onPress={() => evaluateTypingQuestion(this.state.text, this.props.question.correctAnswers, this.setSubmitted, this.setAnswerAs)}
             >
               { !this.state.text.length > 0 &&
                 <Text style={styles.submitText}>Type Answer</Text>

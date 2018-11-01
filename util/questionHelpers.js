@@ -51,8 +51,6 @@ const createQuestions = (questionData, callback) => {
     questions.push(question);
   });
 
-  console.log(questions);
-
   callback(randomize(questions));
 }
 

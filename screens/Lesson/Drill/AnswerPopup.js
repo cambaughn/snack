@@ -1,14 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
-const AnswerPopup = ({ correct, correctAnswer, goNextQuestion, failQuestion }) => {
+const AnswerPopup = ({ correct, correctAnswer, goNextQuestion, failQuestion, answerWithAccents }) => {
 
   return (
     <View style={styles.container}>
       <View style={correct ? StyleSheet.flatten([styles.card, styles.correct]) : StyleSheet.flatten([styles.card, styles.incorrect])}>
         { correct &&
           <View style={styles.textWrapper}>
-            <Text style={styles.correctAnswer}>Good job!</Text>
+            { answerWithAccents ? (
+              <View style={styles.textWrapper}>
+                <Text style={styles.prompt}>Don't forget the accents!</Text>
+                <Text style={styles.correctAnswer}>{answerWithAccents}</Text>
+              </View>
+            ) : (
+              <Text style={styles.correctAnswer}>Good job!</Text>
+            )}
           </View>
         }
 
@@ -76,6 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
+
   correctAnswer: {
     fontSize: 20,
     color: 'white',
@@ -96,7 +104,6 @@ const styles = StyleSheet.create({
 
   correct: {
     backgroundColor: '#2ecc71',
-
   },
 
   incorrect: {

@@ -16,7 +16,7 @@ const replaceAccents = (text) => {
 }
 
 
-const evaluateTypingQuestion = (userAnswer, correctAnswers, setSubmitted, setAnswerAs ) => {
+const evaluateTypingQuestion = (userAnswer, correctAnswers, setSubmitted, setAnswerAs, setAnswerWithAccents ) => {
   let answerGiven = streamline(userAnswer);
   let answers = correctAnswers.map(answer => streamline(answer));
 
@@ -28,11 +28,11 @@ const evaluateTypingQuestion = (userAnswer, correctAnswers, setSubmitted, setAns
       setAnswerAs(true);
     } else {
       let withoutAccents = answers.map(answer => replaceAccents(answer));
+      let answerIndex = withoutAccents.indexOf(answerGiven);
 
-      console.log(answers)
-      console.log(' no accents => ', withoutAccents);
-      if (withoutAccents.includes(answerGiven)) {
+      if (answerIndex >= 0) {
         setAnswerAs(true);
+        setAnswerWithAccents(answers[answerIndex]);
       } else {
         setAnswerAs(false);
       }

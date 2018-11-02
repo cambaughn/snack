@@ -16,6 +16,7 @@ export default class TypingQuestion extends React.Component {
       text: '',
       submitted: null,
       correct: null,
+      answerWithAccents: null
     }
 
     this.baseState = this.state;
@@ -32,6 +33,10 @@ export default class TypingQuestion extends React.Component {
 
   setAnswerAs = (value) => {
     this.setState({ correct: value });
+  }
+
+  setAnswerWithAccents = (value) => {
+    this.setState({ answerWithAccents: value });
   }
 
 
@@ -57,7 +62,7 @@ export default class TypingQuestion extends React.Component {
         <KeyboardAvoidingView style={styles.answersWrapper} contentContainerStyle={styles.answersWrapper} >
           <TouchableOpacity
             style={this.state.text.length > 0 ? styles.submitButton : StyleSheet.flatten([styles.submitButton, styles.selectButton])}
-            onPress={() => evaluateTypingQuestion(this.state.text, this.props.question.correctAnswers, this.setSubmitted, this.setAnswerAs)}
+            onPress={() => evaluateTypingQuestion(this.state.text, this.props.question.correctAnswers, this.setSubmitted, this.setAnswerAs, this.setAnswerWithAccents)}
             >
               { !this.state.text.length > 0 &&
                 <Text style={styles.submitText}>Type Answer</Text>
@@ -69,7 +74,7 @@ export default class TypingQuestion extends React.Component {
           </KeyboardAvoidingView>
 
           { this.state.submitted &&
-            <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={correctAnswer} />
+            <AnswerPopup correct={this.state.correct} goNextQuestion={this.props.goNextQuestion} failQuestion={this.props.failQuestion} correctAnswer={correctAnswer} answerWithAccents={this.state.answerWithAccents} />
           }
         </View>
       )

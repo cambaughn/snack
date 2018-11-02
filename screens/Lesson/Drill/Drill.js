@@ -80,7 +80,9 @@ class Drill extends React.Component {
           }
         </View>
 
-        <ProgressBar current={this.state.pointer} total={this.state.questions.length} />
+        { this.state.pointer !== this.state.questions.length &&
+          <ProgressBar current={this.state.pointer} total={this.state.questions.length} />
+        }
 
         { currentQuestion.type === 'multipleChoice' &&
           <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} failQuestion={this.failQuestion} />

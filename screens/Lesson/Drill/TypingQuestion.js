@@ -34,22 +34,6 @@ export default class TypingQuestion extends React.Component {
     this.setState({ correct: value });
   }
 
-  evaluateAnswer = () => {
-    let userAnswer = streamline(this.state.text);
-    let answers = this.props.question.correctAnswers.map(answer => streamline(answer));
-
-    if (this.state.text.length > 0) {
-      this.setState({ submitted: true });
-      Keyboard.dismiss();
-
-      if (answers.includes(userAnswer)) {
-        this.setState({ correct: true });
-      } else {
-        this.setState({ correct: false });
-      }
-    }
-  }
-
 
   render() {
     let correctAnswer = this.props.question.correctAnswers[0];

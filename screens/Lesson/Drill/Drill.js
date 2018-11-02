@@ -9,6 +9,7 @@ import lessonText from '../../../util/lessonText.json';
 import MultipleChoice from './MultipleChoice';
 import TypingQuestion from './TypingQuestion';
 import FinishedDrill from './FinishedDrill';
+import ProgressBar from './ProgressBar';
 
 // Utility functions
 import { getQuestions, createQuestions } from '../../../util/questionHelpers';
@@ -78,6 +79,9 @@ class Drill extends React.Component {
           />
           }
         </View>
+
+        <ProgressBar current={this.state.pointer} total={this.state.questions.length} />
+
         { currentQuestion.type === 'multipleChoice' &&
           <MultipleChoice question={currentQuestion} goNextQuestion={this.goNextQuestion} failQuestion={this.failQuestion} />
         }
@@ -86,8 +90,8 @@ class Drill extends React.Component {
           <TypingQuestion question={currentQuestion} goNextQuestion={this.goNextQuestion} failQuestion={this.failQuestion} />
         }
 
-        { currentQuestion === 'finished' &&
-          <FinishedDrill closeModal={this.closeModal} user={this.props.user} lessonId={this.props.navigation.getParam('lesson').id} updateUser={this.props.updateUser} />
+        { currentQuestion === 'finished' && this.state.questions.length &&
+          <FinishedDrill closeModal={this.closeModal} user={this.props.user} lessonId={this.props.navigation.getParam('lesson').id} updateUser={this.props.updateUser} lastLesson={this.state.pointer === this.state.questions.length} />
         }
       </SafeAreaView>
     )
